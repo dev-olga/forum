@@ -7,3 +7,14 @@ def index(request):
     return render(request, 'forum/index.html', context)
 
 
+def subcategory(request):
+    context = {'title': 'Forum'}
+    return render(request, 'forum/subcategory.html', context)
+
+def thread(request):
+    context = {'title': 'Forum'}
+    return render(request, 'forum/thread.html', context)
+
+
+
+

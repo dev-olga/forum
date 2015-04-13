@@ -16,9 +16,10 @@ class Thread(models.Model):
     subject = models.CharField(max_length=1024)
     message = models.CharField(max_length=1024)
     date = models.DateTimeField()
-    user = models.ForeignKey('auth.User', default=None)
-    user_name = models.CharField(max_length=1024, default=None)
-    user_email = models.CharField(max_length=1024, default=None)
+    user = models.ForeignKey('auth.User', default=None, null=True)
+    user_name = models.CharField(max_length=1024, default=None, null=True)
+    user_email = models.CharField(max_length=1024, default=None, null=True)
+    image = models.ImageField(upload_to='threads', default=None, null=True, max_length=1024)
 
 
 class Post(models.Model):
@@ -26,7 +27,8 @@ class Post(models.Model):
     subject = models.CharField(max_length=1024)
     message = models.CharField(max_length=1024)
     date = models.DateTimeField()
-    user = models.ForeignKey('auth.User', default=None)
-    user_name = models.CharField(max_length=1024, default=None)
-    user_email = models.CharField(max_length=1024, default=None)
-    parent_post = models.ForeignKey('self', default=None)
+    user = models.ForeignKey('auth.User', default=None, null=True)
+    user_name = models.CharField(max_length=1024, default=None, null=True)
+    user_email = models.CharField(max_length=1024, default=None, null=True)
+    parent_post = models.ForeignKey('self', default=None, null=True)
+    image = models.ImageField(upload_to='posts', default=None, null=True, max_length=1024)
