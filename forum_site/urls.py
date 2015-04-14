@@ -1,10 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'forum_site.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-    url(r'^forum/', include('forum.urls', namespace='forum'))
+urlpatterns = patterns('', url(r'^forum/', include('forum.urls', namespace='forum'))
     # url(r'^admin/', include(admin.site.urls))
 )

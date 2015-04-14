@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>{% block title %}{% endblock %}</title>
     {% load staticfiles %}
-    <link rel=”stylesheet” type=”text/css” href=”{% static 'forum/bootstrap.min.css' %}” />
+    <link rel="stylesheet" type="text/css" href='{% static 'forum/css/bootstrap.min.css' %}' />
+<link rel="stylesheet" type="text/css" href='{% static 'forum/css/common.css' %}' />
 </head>
+
 <body>
-    {% block content %}{% endblock %}
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>

@@ -1,6 +1,65 @@
+
 {% extends 'forum/base.html' %}
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-    test
+    <div class=row>
+        <div class="col-md-2">
+            <img class="img-responsive" alt="Logo"></imag>
+        </div>
+        <div class="col-md-8">
+            <h1>Forum board</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at tincidunt nibh.
+                Integer malesuada eros sed sapien imperdiet bibendum. Curabitur consectetur,
+                massa quis pretium pellentesque, nisl nisi rhoncus neque, et blandit tellus ligula non dui.
+            </p>
+        </div>
+        <div class="col-md-2">
+            <div class="pull-right">
+                {% if request.user %}
+                    <a href="{% url 'forum:logout' %}">Log out</a>
+                {% else %}
+                    <a href="{% url 'forum:login' %}">Login</a>
+                {% endif %}
+                |
+                <a href="{%  url 'forum:index' %}">Admin</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+     <div class="col-md-2">
+        <div class="bs-component">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Updates</h3>
+                </div>
+                <div class="panel-body">
+                  Panel content
+                </div>
+            </div>
+         </div>
+    </div>
+        {% for category in categories %}
+            <div class="col-md-2">
+                <div class="bs-component">
+                    <div class="panel {% if category.auth_only %}panel-warning{% else %}panel-primary{% endif %}">
+                        <div class="panel-heading">
+                          <h3 class="panel-title">{{ category.name }}</h3>
+                        </div>
+                        <div class="panel-body">
+                            {{ category.auth_only }}
+                            <ul>
+                                {% for subcategory in category.subcategory_set.all %}
+                                    <li>
+                                    <a href="{% url "forum:subcategory" subcategory.id %}">{{ subcategory.name }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
