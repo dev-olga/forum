@@ -8,5 +8,5 @@ class Index(View):
 
     def get(self, request):
         categories = Category.objects.all()
-        subcategories = SubCategory.objects.all()
-        return render(request, self.template_name, {'categories': categories, 'subcategories': subcategories})
+        latest_post = Post.objects.order_by('date').reverse().all()[0:3]
+        return render(request, self.template_name, {'categories': categories, 'latest_post': latest_post})

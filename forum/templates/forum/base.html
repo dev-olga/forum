@@ -3,12 +3,13 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
     {% load staticfiles %}
-    <link rel="stylesheet" type="text/css" href='{% static 'forum/css/bootstrap.min.css' %}' />
-<link rel="stylesheet" type="text/css" href='{% static 'forum/css/common.css' %}' />
+    <link rel="stylesheet" type="text/css" href='{% static 'forum/css/themes/darkly.bootstrap.min.css' %}' />
+    <link rel="stylesheet" type="text/css" href='{% static 'forum/css/common.css' %}' />
 </head>
 
 <body>
     <div class="container">
+        {% block header %}{% endblock %}
         {% block content %}{% endblock %}
     </div>
 </body>

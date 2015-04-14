@@ -12,6 +12,7 @@ python manage.py runserver
 #dump/load data
 python manage.py dumpdata > db.json 
 python manage.py dumpdata forum.category forum.subcategory > forum.json
+python manage.py loaddata forum.json
 
 #libs
 #Pillow -->

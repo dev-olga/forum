@@ -7,7 +7,7 @@ urlpatterns = patterns(''
    , url(r'^logout/$', views.Logout.as_view(), name='logout')
    , url(r'^register/$', views.Register.as_view(), name='register')
    #  , url(r'^$', views.category, name='category')
-   , url(r'^(?P<subcategory_id>\d+)/', views.subcategory, name='subcategory')
+   , url(r'^(?P<subcategory_id>\d+)/', views.SubCategory.as_view(), name='subcategory')
    # , url(r'^(?P<thread_id>\d+)/', views.thread, name='thread')
    # , url(r'^(?P<post_id>\d+)/$', views.post, name='post')
 )
