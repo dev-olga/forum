@@ -8,3 +8,7 @@ li{
     margin: 0;
     display: block;
 }
+
+label, input, textarea{
+    display: block!important;
+}

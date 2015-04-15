@@ -7,13 +7,9 @@
             {% for category in categories %}
                 <p>
                     <strong class="{% if category.auth_only %}text-warning{% endif %}">{{ category.name }}:</strong>
-                    <ul>
                         {% for subcategory in category.subcategory_set.all %}
-                            <li>
                                 <a href="{% url "forum:subcategory" subcategory.id %}">{{ subcategory.name }}</a>
-                            </li>
                         {% endfor %}
-                    </ul>
                 </p>
             {% endfor %}
         </div>
@@ -28,7 +24,7 @@
                 {% endif %}
             </div>
             <div>
-                <img class="img-responsive" alt="Logo"></img>
+                <img alt="Logo"></img>
             </div>
         </div>
     </div>

@@ -1,0 +1,14 @@
+{% extends "forum/forum_base.html" %}
+{% block title %}
+    {{ subcategory.name }}
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url "forum:subcategory" subcategory.id %}" method="post">
+        <h2>New thread</h2>
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Post" class="btn btn-default"/>
+    </form>
+{% endblock %}
