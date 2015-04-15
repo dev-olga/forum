@@ -5,7 +5,7 @@
 
 {% block content %}
 
-    <form action="{% url "forum:subcategory" subcategory.id %}" method="post">
+    <form enctype="multipart/form-data" action="{% url "forum:subcategory" subcategory.id %}" method="post" >
         <h2>New thread</h2>
         {% csrf_token %}
         {{ form }}

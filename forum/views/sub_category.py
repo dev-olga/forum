@@ -16,7 +16,7 @@ class SubCategory(View):
 
     #TODO login check
     def post(self, request, id):
-        form = forms.ThreadForm(request.POST)
+        form = forms.ThreadForm(request.POST, request.FILES)
         if not form:
             return HttpResponseRedirect(reverse('forum:index'))
 
