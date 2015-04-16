@@ -1,5 +1,6 @@
 from django import forms
 from forum import models
+from django.contrib.auth import forms as auth_forms
 import datetime
 
 
@@ -23,7 +24,7 @@ class ThreadForm(forms.ModelForm):
         super(ThreadForm, self).__init__(*args, **kwargs)
         instance = getattr(self, 'instance', None)
         if instance and instance.user:
-            self.fields['user_name'].user_name = self._get_user_name(instance)
+            self.fields['user_name'].user_name = instance.user.get_full_name()
             self.fields['user_name'].widget.attrs['readonly'] = True
 
             self.fields['user_email'] = instance.user.email
@@ -43,10 +44,29 @@ class ThreadForm(forms.ModelForm):
     def clean_user_name(self):
         instance = getattr(self, 'instance', None)
         if instance and instance.user:
-            return self._get_user_name(instance)
+            return instance.user.get_full_name()
         else:
             return self.cleaned_data['user_name']
 
-    def _get_user_name(self, instance):
-        return "{0}, {1}".format(instance.user.last_name, instance.user.first_name)
 
+class AuthenticationForm(auth_forms.AuthenticationForm):
+    """
+    Form for authorization by username and email
+    """
+
+    def __init__(self, request=None, *args, **kwargs):
+        super(AuthenticationForm, self).__init__(request, *args, **kwargs)
+
+        self.fields['username'].label = 'User name / Email'
+
+
+class UserCreationForm(auth_forms.UserCreationForm):
+    """
+    A form that creates a user, with no privileges, from the given username and
+    password.
+    """
+
+    class Meta(auth_forms.UserCreationForm.Meta):
+        fields = ("username", "email", "first_name", "last_name")
+
+    email = forms.EmailField()

@@ -3,7 +3,7 @@ from django.views.generic import View
 from forum import models
 
 
-class Index(View):
+class IndexView(View):
     template_name = 'forum/index.html'
 
     def get(self, request):

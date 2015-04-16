@@ -8,7 +8,7 @@
         <div class="col-md-2">
             <img class="img-responsive" alt="Logo"></imag>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
             <h1>Forum board</h1>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at tincidunt nibh.
@@ -16,12 +16,14 @@
                 massa quis pretium pellentesque, nisl nisi rhoncus neque, et blandit tellus ligula non dui.
             </p>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="pull-right">
-                {% if request.user %}
+                {% if user.is_authenticated %}
                     <a href="{% url 'forum:logout' %}">Log out</a>
                 {% else %}
                     <a href="{% url 'forum:login' %}">Login</a>
+                    |
+                    <a href="{% url 'forum:registration' %}">Registration</a>
                 {% endif %}
                 |
                 <a href="{%  url 'forum:index' %}">Admin</a>
