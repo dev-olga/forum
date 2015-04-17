@@ -9,6 +9,10 @@ class BaseForumForm(forms.ModelForm):
         labels = {
             'image': 'Upload file'
         }
+        widgets = {
+            'message': forms.Textarea(attrs={'cols': 40, 'rows': 5})
+
+        }
 
     def __init__(self, user, *args, **kwargs):
         super(BaseForumForm, self).__init__(*args, **kwargs)
@@ -32,20 +36,12 @@ class ThreadForm(BaseForumForm):
     class Meta(BaseForumForm.Meta):
         model = models.Thread
         fields = ['subject', 'user_name', 'user_email', 'message', 'image']
-        widgets = {
-            'message': forms.Textarea(attrs={'cols': 40, 'rows': 5})
-
-        }
 
 
 class PostForm(BaseForumForm):
     class Meta(BaseForumForm.Meta):
         model = models.Post
-        fields = [ 'user_name', 'user_email', 'message', 'image', 'parent_post']
-        widgets = {
-            'message': forms.Textarea(attrs={'cols': 40, 'rows': 5}),
-            'parent_post': forms.HiddenInput()
-        }
+        fields = [ 'user_name', 'user_email', 'message', 'image']
 
     # def __init__(self, user, *args, **kwargs):
     #     super(PostForm, self).__init__(user, *args, **kwargs)

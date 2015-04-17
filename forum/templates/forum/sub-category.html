@@ -25,35 +25,38 @@
     {% for thread in sub_category.thread_set.all|dictsortreversed:'date' %}
         <div class="panel panel-default">
             <div class="panel-body">
-                <div class="row">
+            <!--Thread header-->
+            <div class="row">
+                {% if  thread.image %}
                     <div class=col-md-2>
-                        {% if  thread.image %}
-                            <img class="img-responsive"
-                                src="{{ thread.image.url }}" />
-                        {% endif %}
-                    </div>
+                        <img class="img-responsive"
+                            src="{{ thread.image.url }}" />
+                        </div>
                     <div class=col-md-10>
-                            <h4>
-                                <strong>#{{ thread.id }} | {{ thread.subject }}</strong>
-                                <i> Created: {{ thread.date|date:"M d Y" }}</i>
-                                <a href="{% url 'forum:thread' thread.id %}"
-                                       class="btn btn-default pull-right" >Reply</a>
-                            </h4>
-                            <p>
-                                {{ thread.message }}
+                {% else %}
+                    <div class=col-md-12>
+                {% endif %}
+                        <h4>
+                            <strong>#{{ thread.id }} | {{ thread.subject }}</strong>
+                            <i> Created: {{ thread.date|date:"M d Y" }}</i>
+                            <a href="{% url 'forum:thread' thread.id %}"
+                                   class="btn btn-default pull-right" >Reply</a>
+                        </h4>
+                        <p>
+                            {{ thread.message }}
+                        </p>
+                        {% if thread.post_set.all.count > 0 %}
+                            <p class="replies">
+                                replies:
+                                {% for post in thread.post_set.all %}
+                                    <a href="{%  url 'forum:thread' thread.id %}#{{ post.id }}">
+                                        #{{ post.id }}
+                                    </a>
+                                {% endfor %}
                             </p>
-                            {% if thread.post_set.all.count > 0 %}
-                                <p class="replies">
-                                    replies:
-                                    {% for post in thread.post_set.all %}
-                                        <a href="{%  url 'forum:thread' thread.id %}#{{ post.id }}">
-                                            #{{ post.id }}
-                                        </a>
-                                    {% endfor %}
-                                </p>
-                            {% endif %}
-                    </div>
+                        {% endif %}
                 </div>
+            </div>
                 {% for post in thread.post_set.all|dictsortreversed:'date'|slice:":2" %}
                     <div class="panel panel-default">
                         <div class="panel-body">

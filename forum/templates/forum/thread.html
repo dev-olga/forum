@@ -11,7 +11,14 @@
           <h3 class="panel-title">{{ thread.subject }}</h3>
         </div>
         <div class="panel-body">
-                <form enctype="multipart/form-data" action="{% url "forum:thread" thread.id %}" method="post" >
+            <form enctype="multipart/form-data"
+                  action="
+                      {% if reply_to %}
+                      {% url "forum:reply_to_post" thread.id reply_to%}
+                      {% else %}
+                      {% url "forum:thread" thread.id %}
+                      {% endif %}"
+                  method="post" >
                     <fieldset>
                         <legend>Reply</legend>
                         {% csrf_token %}
@@ -26,13 +33,15 @@
         <div class="panel-body">
             <!--Thread header-->
             <div class="row">
-                <div class=col-md-2>
-                    {% if  thread.image %}
+                {% if  thread.image %}
+                    <div class=col-md-2>
                         <img class="img-responsive"
                             src="{{ thread.image.url }}" />
-                    {% endif %}
-                </div>
-                <div class=col-md-10>
+                        </div>
+                    <div class=col-md-10>
+                {% else %}
+                    <div class=col-md-12>
+                {% endif %}
                         <h4>
                             <strong>#{{ thread.id }} | {{ thread.subject }}</strong>
                             <i> Created: {{ thread.date|date:"M d Y" }}</i>
