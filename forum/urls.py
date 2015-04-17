@@ -16,5 +16,7 @@ urlpatterns = patterns(''
          views.RegistrationView.as_view(template_name='forum/account/registration.html',), name='registration')
 
    , url(r'^(?P<id>\d+)/', views.SubCategoryView.as_view(), name='subcategory')
-   , url(r'^thread/(?P<id>\d+)/', views.Thread.as_view(), name='thread')
+   , url(r'^thread/(?P<id>\d+)/', views.ThreadView.as_view(), name='thread')
+   # , url(r'^thread/(?P<id>\d+)/reply_to-(?P<post_id>\d+)/', views.ThreadView.as_view(), name='reply_to_post')
+   , url(r'^thread/(?P<id>\d+)/(?P<post_id>\d+)/', views.ThreadView.as_view(), name='reply_to_post')
 )

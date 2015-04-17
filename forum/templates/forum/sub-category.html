@@ -46,7 +46,9 @@
                                 <p class="replies">
                                     replies:
                                     {% for post in thread.post_set.all %}
-                                        <a href="{%  url 'forum:thread' thread.id %}#{{ post.id }}"></a>
+                                        <a href="{%  url 'forum:thread' thread.id %}#{{ post.id }}">
+                                            #{{ post.id }}
+                                        </a>
                                     {% endfor %}
                                 </p>
                             {% endif %}
@@ -56,13 +58,6 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <p>#{{ post.id }} Created: {{ post.date|date:"M d Y" }}</p>
-                            <p>
-                                <strong>
-                                    <a href="{%  url 'forum:thread' thread.id %}#{{ post.id }}">
-                                        >>#{{ thread.id }}
-                                    </a>
-                                </strong>
-                            </p>
                             <p>
                                 {{ post.message }}
                             </p>

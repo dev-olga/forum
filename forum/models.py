@@ -1,6 +1,4 @@
 from django.db import models
-from django.db.models import Max
-from django.core.files.storage import FileSystemStorage
 from datetime import datetime
 
 
@@ -16,22 +14,21 @@ class SubCategory(models.Model):
 
 class Thread(models.Model):
     sub_category = models.ForeignKey(SubCategory)
-    subject = models.CharField(max_length=1024)
+    subject = models.CharField(max_length=100)
     message = models.CharField(max_length=1024)
     date = models.DateTimeField(default=datetime.now)
     user = models.ForeignKey('auth.User', default=None, null=True)
-    user_name = models.CharField(max_length=1024, default=None, null=True)
-    user_email = models.EmailField(max_length=1024, default=None, null=True)
+    user_name = models.CharField(max_length=100, default=None, null=True, blank=True)
+    user_email = models.EmailField(max_length=100, default=None, null=True, blank=True)
     image = models.ImageField(upload_to='threads/', default=None, null=True, max_length=1024, blank=True)
 
 
 class Post(models.Model):
     thread = models.ForeignKey(Thread)
-    subject = models.CharField(max_length=1024)
     message = models.CharField(max_length=1024)
     date = models.DateTimeField(default=datetime.now)
     user = models.ForeignKey('auth.User', default=None, null=True)
-    user_name = models.CharField(max_length=1024, default=None, null=True)
-    user_email = models.EmailField(max_length=1024, default=None, null=True)
-    parent_post = models.ForeignKey('self', default=None, null=True)
+    user_name = models.CharField(max_length=100, default=None, null=True, blank=True)
+    user_email = models.EmailField(max_length=100, default=None, null=True, blank=True)
+    parent_post = models.ForeignKey('self', default=None, null=True, blank=True)
     image = models.ImageField(upload_to='posts/', default=None, null=True, max_length=1024, blank=True)

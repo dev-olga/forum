@@ -1,13 +1,13 @@
-
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
-from django.views.generic import View
 from forum import models
 from forum import forms
+from forum.views.base_forum_view import BaseForumView
 
 
-class SubCategoryView(View):
+class SubCategoryView(BaseForumView):
+
     template_name = 'forum/sub-category.html'
 
     #TODO login check
@@ -28,11 +28,11 @@ class SubCategoryView(View):
         return render(request, self.template_name, self._get_context(id, form, request.user))
 
     def _get_context(self, id, form, user):
-        sub_category = get_object_or_404(models.SubCategory, id=id)
-        categories = models.Category.objects.all()
+        context = super(SubCategoryView, self)._get_context()
+        context['sub_category'] = get_object_or_404(models.SubCategory, id=id)
 
         if not form:
             form = forms.ThreadForm(user)
-
-        return {'categories': categories, 'sub_category': sub_category, 'form': form}
+        context['form'] = form
+        return context
 

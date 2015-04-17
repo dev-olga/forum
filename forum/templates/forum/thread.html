@@ -1,5 +1,84 @@
-{% extends 'forum/forum_base.html' %}
-{% block title %}Forum{% endblock %}
+{% extends "forum/forum_base.html" %}
 
-{% block body_block %}
+{% block title %}
+    {{ thread.subject }}
+{% endblock %}
+
+{% block content %}
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{ thread.subject }}</h3>
+        </div>
+        <div class="panel-body">
+                <form enctype="multipart/form-data" action="{% url "forum:thread" thread.id %}" method="post" >
+                    <fieldset>
+                        <legend>Reply</legend>
+                        {% csrf_token %}
+                        {{ form }}
+                        <input type="submit" value="Post" class="btn btn-default"/>
+                    </fieldset>
+                </form>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <!--Thread header-->
+            <div class="row">
+                <div class=col-md-2>
+                    {% if  thread.image %}
+                        <img class="img-responsive"
+                            src="{{ thread.image.url }}" />
+                    {% endif %}
+                </div>
+                <div class=col-md-10>
+                        <h4>
+                            <strong>#{{ thread.id }} | {{ thread.subject }}</strong>
+                            <i> Created: {{ thread.date|date:"M d Y" }}</i>
+                            <a href="{% url 'forum:thread' thread.id %}"
+                                   class="btn btn-default pull-right" >Reply</a>
+                        </h4>
+                        <p>
+                            {{ thread.message }}
+                        </p>
+                        {% if thread.post_set.all.count > 0 %}
+                            <p class="replies">
+                                replies:
+                                {% for post in thread.post_set.all %}
+                                    <a href="{%  url 'forum:thread' thread.id %}#{{ post.id }}">
+                                        #{{ post.id }}
+                                    </a>
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+                </div>
+            </div>
+            {% for post in thread.post_set.all|dictsort:'date' %}
+                <div class="panel panel-default" id="{{ post.id }}">
+                    <div class="panel-body">
+                        <div class=pull-right>
+                            <a href="{% url 'forum:reply_to_post' thread.id post.id %}"
+                                   class="btn btn-default pull-right" >Reply</a>
+                        </div>
+                        <p>#{{ post.id }} Created: {{ post.date|date:"M d Y" }}</p>
+                        <p>
+                            {{ post.message }}
+                        </p>
+                        {% if post.post_set.all.count > 0 %}
+                            <p class="replies">
+                                replies:
+                                {% for post in post.post_set.all %}
+                                    <a href="{%  url 'forum:thread' thread.id %}#{{ post.id }}">
+                                        #{{ post.id }}
+                                    </a>
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}
