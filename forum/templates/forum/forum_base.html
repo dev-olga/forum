@@ -2,7 +2,19 @@
 
 {% block header %}
     <!-- HEADER -->
-    <div class=row>
+    <div class="row">
+        <div class=col-md-12>
+            <div class="pull-right">
+                <a href="{%  url 'forum:index' %}">Dashboard</a> |
+                {% if request.user %}
+                    <a href="{% url 'forum:logout' %}">Log out</a>
+                {% else %}
+                    <a href="{% url 'forum:login' %}">Login</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-10">
             {% for category in categories %}
                 <p>
@@ -14,17 +26,9 @@
             {% endfor %}
         </div>
         <div class="col-md-2">
-
             <div class="pull-right">
-                <a href="{%  url 'forum:index' %}">Dashboard</a> |
-                {% if request.user %}
-                    <a href="{% url 'forum:logout' %}">Log out</a>
-                {% else %}
-                    <a href="{% url 'forum:login' %}">Login</a>
-                {% endif %}
-            </div>
-            <div>
-                <img alt="Logo"></img>
+                {% load staticfiles %}
+                <img class="img-responsive" alt="Logo" src="{% static 'forum/images/logo.png' %}"></imag>
             </div>
         </div>
     </div>

@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import View
 from forum import models
+# from django.db import models
+from django.db.models import Max
 
 
 class IndexView(View):
@@ -8,5 +10,6 @@ class IndexView(View):
 
     def get(self, request):
         categories = models.Category.objects.all()
-        latest_post = models.Post.objects.order_by('date').reverse().all()[0:3]
-        return render(request, self.template_name, {'categories': categories, 'latest_post': latest_post})
+        latest_threads = models.Thread.objects.annotate(latest_post=Max('post__date'))\
+            .order_by(max('latest_post', 'date')).reverse()[0:3]
+        return render(request, self.template_name, {'categories': categories, 'latest_threads': latest_threads})

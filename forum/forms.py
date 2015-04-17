@@ -20,33 +20,38 @@ class ThreadForm(forms.ModelForm):
         #     },
         # }
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, user=None, *args, **kwargs):
         super(ThreadForm, self).__init__(*args, **kwargs)
-        instance = getattr(self, 'instance', None)
-        if instance and instance.user:
-            self.fields['user_name'].user_name = instance.user.get_full_name()
-            self.fields['user_name'].widget.attrs['readonly'] = True
-
-            self.fields['user_email'] = instance.user.email
-            self.fields['user_email'].widget.attrs['readonly'] = True
+        if user and user.is_authenticated():
+            self.set_user(user)
 
     def save(self, *args, **kwargs):
         self.instance.date = datetime.datetime.now()
         super(ThreadForm, self).save(*args, **kwargs)
+    #
+    # def clean_user_email(self):
+    #     instance = getattr(self, 'instance', None)
+    #     if instance and instance.user:
+    #         return instance.user.email
+    #     else:
+    #         return self.cleaned_data['user_email']
+    #
+    # def clean_user_name(self):
+    #     instance = getattr(self, 'instance', None)
+    #     if instance and instance.user:
+    #         return instance.user.username
+    #     else:
+    #         return self.cleaned_data['user_name']
 
-    def clean_user_email(self):
-        instance = getattr(self, 'instance', None)
-        if instance and instance.user:
-            return instance.user.email
-        else:
-            return self.cleaned_data['user_email']
+    def set_user(self, user):
+        self.instance.user = user
+        self.fields['user_name'].initial = user.username
+        self.fields['user_name'].widget.attrs['readonly'] = True
+        # self.fields['user_name'].widget.attrs['disabled'] = True
 
-    def clean_user_name(self):
-        instance = getattr(self, 'instance', None)
-        if instance and instance.user:
-            return instance.user.get_full_name()
-        else:
-            return self.cleaned_data['user_name']
+        self.fields['user_email'].initial = user.email
+        self.fields['user_email'].widget.attrs['readonly'] = True
+        # self.fields['user_email'].widget.attrs['disabled'] = True
 
 
 class AuthenticationForm(auth_forms.AuthenticationForm):
@@ -69,4 +74,4 @@ class UserCreationForm(auth_forms.UserCreationForm):
     class Meta(auth_forms.UserCreationForm.Meta):
         fields = ("username", "email", "first_name", "last_name")
 
-    email = forms.EmailField()
+    email = forms.EmailField(required=True)

@@ -1,34 +1,14 @@
-from django.shortcuts import render, redirect
 from django.core.urlresolvers import reverse
-# from django.views.generic import View
-# from django.contrib.auth import authenticate
 from django.contrib.auth import authenticate, login
 from django.utils.functional import lazy
 from django.views.generic import FormView
-
 from forum import forms
-
-#
-# class RegistrationView(View):
-#     template_name = 'forum/register.html'
-#
-#     def get(self, request):
-#         return render(request, self.template_name, {'form': forms.UserCreationForm()})
-#
-#     def post(self, request):
-#         form = forms.UserCreationForm(request.POST)
-#         if not form:
-#             return redirect(reverse('forum:index'))
-#
-#         if form.is_valid():
-#             user = form.save()
-#             authenticate(username=user.username, password=user.password)
-#             return redirect(reverse('forum:index'))
-#
-#         return render(request, self.template_name,{'form': form})
 
 
 class RegistrationView(FormView):
+    """
+    New user registration form
+    """
 
     template_name = 'forum/account/registration.html'
     success_url = lazy(reverse, str)('forum:index')

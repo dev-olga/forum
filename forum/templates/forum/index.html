@@ -6,15 +6,12 @@
     <!-- HEADER -->
     <div class=row>
         <div class="col-md-2">
-            <img class="img-responsive" alt="Logo"></imag>
+            {% load staticfiles %}
+            <img class="img-responsive" alt="Logo" src="{% static 'forum/images/logo.png' %}"></imag>
         </div>
         <div class="col-md-7">
             <h1>Forum board</h1>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at tincidunt nibh.
-                Integer malesuada eros sed sapien imperdiet bibendum. Curabitur consectetur,
-                massa quis pretium pellentesque, nisl nisi rhoncus neque, et blandit tellus ligula non dui.
-            </p>
+            {% lorem 1 p %}
         </div>
         <div class="col-md-3">
             <div class="pull-right">
@@ -42,9 +39,12 @@
                 </div>
                 <div class="panel-body">
                     <ul>
-                        {% for post in latest_posts %}
+                        {% for thread in latest_threads %}
                             <li>
-                            [{{ post.thread.subject }}] {{ post.subject }}
+                                <a href="{% url "forum:subcategory" thread.sub_category.id %}">
+                                    [{{ thread.sub_category.name }}]
+                                </a>
+                                <a href="{% url "forum:thread" thread.id %}"> {{ thread.subject }}</a>
                             </li>
                         {% endfor %}
                     </ul>

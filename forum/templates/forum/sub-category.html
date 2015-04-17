@@ -1,14 +1,84 @@
 {% extends "forum/forum_base.html" %}
+
 {% block title %}
     {{ subcategory.name }}
 {% endblock %}
 
 {% block content %}
 
-    <form enctype="multipart/form-data" action="{% url "forum:subcategory" subcategory.id %}" method="post" >
-        <h2>New thread</h2>
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Post" class="btn btn-default"/>
-    </form>
+    <div class="panel {% if sub_category.category.auth_only %}panel-warning{% else %}panel-primary{% endif %}">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{ sub_category.name }}</h3>
+        </div>
+        <div class="panel-body">
+                <form enctype="multipart/form-data" action="{% url "forum:subcategory" sub_category.id %}" method="post" >
+                    <fieldset>
+                        <legend>New thread</legend>
+                                            {% csrf_token %}
+                        {{ form }}
+                        <input type="submit" value="Post" class="btn btn-default"/>
+                    </fieldset>
+                </form>
+        </div>
+    </div>
+
+    {% for thread in sub_category.thread_set.all|dictsortreversed:'date' %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class=col-md-2>
+                        {% if  thread.image %}
+                            <img class="img-responsive"
+                                src="{{ thread.image.url }}" />
+                        {% endif %}
+                    </div>
+                    <div class=col-md-10>
+                            <h4>
+                                <strong>#{{ thread.id }} | {{ thread.subject }}</strong>
+                                <i> Created: {{ thread.date|date:"M d Y" }}</i>
+                                <a href="{% url 'forum:thread' thread.id %}"
+                                       class="btn btn-default pull-right" >Reply</a>
+                            </h4>
+                            <p>
+                                {{ thread.message }}
+                            </p>
+                            {% if thread.post_set.all.count > 0 %}
+                                <p class="replies">
+                                    replies:
+                                    {% for post in thread.post_set.all %}
+                                        <a href="{%  url 'forum:thread' thread.id %}#{{ post.id }}"></a>
+                                    {% endfor %}
+                                </p>
+                            {% endif %}
+                    </div>
+                </div>
+                {% for post in thread.post_set.all|dictsortreversed:'date'|slice:":2" %}
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p>#{{ post.id }} Created: {{ post.date|date:"M d Y" }}</p>
+                            <p>
+                                <strong>
+                                    <a href="{%  url 'forum:thread' thread.id %}#{{ post.id }}">
+                                        >>#{{ thread.id }}
+                                    </a>
+                                </strong>
+                            </p>
+                            <p>
+                                {{ post.message }}
+                            </p>
+                            {% if post.post_set.all.count > 0 %}
+                                <p class="replies">
+                                    replies:
+                                    {% for post in post.post_set.all %}
+                                        <a href="{%  url 'forum:thread' thread.id %}#{{ post.id }}"></a>
+                                    {% endfor %}
+                                </p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

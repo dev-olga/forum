@@ -16,11 +16,10 @@ class SubCategoryView(View):
 
     #TODO login check
     def post(self, request, id):
-        form = forms.ThreadForm(request.POST, request.FILES)
+        form = forms.ThreadForm(request.user, request.POST, request.FILES)
         if not form:
             return HttpResponseRedirect(reverse('forum:index'))
 
-        self._init_form(form, request.user)
         if form.is_valid():
             form.instance.sub_category = get_object_or_404(models.SubCategory, id=id)
             form.save()
@@ -29,15 +28,11 @@ class SubCategoryView(View):
         return render(request, self.template_name, self._get_context(id, form, request.user))
 
     def _get_context(self, id, form, user):
-        subcategory = get_object_or_404(models.SubCategory, id=id)
+        sub_category = get_object_or_404(models.SubCategory, id=id)
         categories = models.Category.objects.all()
 
         if not form:
-            form = forms.ThreadForm()
-        self._init_form(form, user)
+            form = forms.ThreadForm(user)
 
-        return {'categories': categories, 'subcategory': subcategory, 'form': form}
+        return {'categories': categories, 'sub_category': sub_category, 'form': form}
 
-    def _init_form(self, form, user):
-        if user and user.is_authenticated():
-            form.instance.user = user

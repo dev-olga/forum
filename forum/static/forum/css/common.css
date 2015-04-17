@@ -12,3 +12,8 @@ li{
 label, input, textarea{
     display: block!important;
 }
+
+.replies {
+    font-style: italic;
+    font-size: 0.9em;
+}
