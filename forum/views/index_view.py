@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import View
 from forum import models
-# from django.db import models
 from django.db.models import Max
 
 

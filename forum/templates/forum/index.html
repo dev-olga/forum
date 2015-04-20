@@ -52,7 +52,8 @@
             </div>
          </div>
     </div>
-        {% for category in categories %}
+        {% load forum_filters %}
+        {% for category in categories|filter_by_permissions:user %}
             <div class="col-md-2">
                 <div class="bs-component">
                     <div class="panel {% if category.auth_only %}panel-warning{% else %}panel-primary{% endif %}">

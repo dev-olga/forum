@@ -16,7 +16,8 @@
     </div>
     <div class="row">
         <div class="col-md-10">
-            {% for category in categories %}
+            {% load forum_filters %}
+            {% for category in categories|filter_by_permissions:user %}
                 <p>
                     <strong class="{% if category.auth_only %}text-warning{% endif %}">{{ category.name }}:</strong>
                         {% for subcategory in category.subcategory_set.all %}

@@ -1,21 +1,26 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
+from django.utils.decorators import method_decorator
+
 from forum import forms
 from forum import models
 from forum.views.base_forum_view import BaseForumView
+from forum.view_decorators.show_view import thread_login_required
 
 
 class ThreadView(BaseForumView):
 
     template_name = 'forum/thread.html'
 
-    #TODO login check
+    @method_decorator(thread_login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ThreadView, self).dispatch(*args, **kwargs)
+
     def get(self, request, id, reply_to=None):
         return render(request, self.template_name, self._get_context(
             id=id, form=None, user=request.user, reply_to=reply_to))
 
-    #TODO login check
     def post(self, request, id, reply_to=None):
         form = forms.PostForm(request.user, request.POST, request.FILES)
         if not form:

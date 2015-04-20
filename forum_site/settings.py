@@ -82,6 +82,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-AUTHENTICATION_BACKENDS = ('forum.services.auth_backends.EmailBackend',)
+AUTHENTICATION_BACKENDS = ('utils.auth_backends.EmailBackend',)
 LOGIN_REDIRECT_URL = ('forum:index')
 MEDIA_URL ='/static/media/'

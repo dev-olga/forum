@@ -1,20 +1,26 @@
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.utils.decorators import method_decorator
+
 from forum import models
 from forum import forms
 from forum.views.base_forum_view import BaseForumView
+from forum.view_decorators.show_view import sub_category_login_required
 
 
 class SubCategoryView(BaseForumView):
 
     template_name = 'forum/sub_category.html'
 
-    #TODO login check
+
+    @method_decorator(sub_category_login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(SubCategoryView, self).dispatch(*args, **kwargs)
+
     def get(self, request, id):
         return render(request, self.template_name, self._get_context(id, None, request.user))
 
-    #TODO login check
     def post(self, request, id):
         form = forms.ThreadForm(request.user, request.POST, request.FILES)
         if not form:
