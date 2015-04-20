@@ -1,0 +1,15 @@
+<p>
+    #{{ post.id }} Created: {{ post.date|date:"M d Y" }}
+    by {{ thread.user_name }}
+</p>
+<p>
+    {{ post.message }}
+</p>
+{% if post.post_set.all.count > 0 %}
+    <p class="replies">
+        replies:
+        {% for post in post.post_set.all %}
+            <a href="{%  url 'forum:thread' thread.id %}#{{ post.id }}">#{{ post.id }}</a>
+        {% endfor %}
+    </p>
+{% endif %}

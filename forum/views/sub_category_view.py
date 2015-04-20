@@ -8,7 +8,7 @@ from forum.views.base_forum_view import BaseForumView
 
 class SubCategoryView(BaseForumView):
 
-    template_name = 'forum/sub-category.html'
+    template_name = 'forum/sub_category.html'
 
     #TODO login check
     def get(self, request, id):
