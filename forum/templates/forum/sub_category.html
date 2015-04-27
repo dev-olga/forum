@@ -26,11 +26,11 @@
         <div class="panel panel-default">
             <div class="panel-body">
             <!--Thread header-->
-            {% include "shared/thread_header.html" with thread=thread %}
+            {% include "forum/partial/thread_header.html" with thread=thread %}
                 {% for post in thread.post_set.all|dictsortreversed:'date'|slice:":2" %}
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            {% include "shared/post_body.html" with post=post%}
+                            {% include "forum/partial/post_body.html" with post=post%}
                         </div>
                     </div>
 

@@ -17,5 +17,5 @@ class EmailBackend(object):
             except User.DoesNotExist:
                 return None
 
-        if user.check_password(password):
+        if user.check_password(password) and user.is_active:
             return user

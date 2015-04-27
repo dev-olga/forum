@@ -18,12 +18,12 @@
                 {% if user.is_authenticated %}
                     <a href="{% url 'forum:logout' %}">Log out</a>
                 {% else %}
-                    <a href="{% url 'forum:login' %}">Login</a>
+                    <a href="{% url 'forum:login' %}" id="login">Login</a>
                     |
-                    <a href="{% url 'forum:registration' %}">Registration</a>
+                    <a href="{% url 'forum:registration' %}" id="registration">Registration</a>
                 {% endif %}
                 |
-                <a href="{%  url 'forum:index' %}">Admin</a>
+                <a href="/admin">Admin</a>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
     <!-- Content -->
 {% block content %}
     <div class="row">
-     <div class="col-md-2">
+     <div class="col-md-4">
         <div class="bs-component">
             <div class="panel panel-info">
                 <div class="panel-heading">
@@ -74,4 +74,22 @@
             </div>
         {% endfor %}
     </div>
+        <div id="login-form" class="modal fade " tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                      <h4 class="modal-title">Log In</h4>
+                    </div>
+                    <div class="modal-body"></div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" id="submit-login">Log In</button>
+                    </div>
+                </div>
+          </div>
+        </div>
+        <div id="registration-form" style="display:none;"></div>
 {% endblock %}

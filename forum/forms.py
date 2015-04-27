@@ -41,7 +41,7 @@ class ThreadForm(BaseForumForm):
 class PostForm(BaseForumForm):
     class Meta(BaseForumForm.Meta):
         model = models.Post
-        fields = [ 'user_name', 'user_email', 'message', 'image']
+        fields = ['user_name', 'user_email', 'message', 'image']
 
     # def __init__(self, user, *args, **kwargs):
     #     super(PostForm, self).__init__(user, *args, **kwargs)

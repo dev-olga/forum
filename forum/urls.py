@@ -1,13 +1,12 @@
 from django.conf.urls import patterns, url
 from django.contrib.auth import views as auth_views
-# from django.views.generic.edit import CreateView
-# from django.core.urlresolvers import reverse
 import views
 import forms
 
 urlpatterns = patterns(''
    , url(r'^$', views.IndexView.as_view(), name='index')
    , url(r'^account/login/$', auth_views.login,
+         # views.LoginView.as_view(),
          { 'template_name' : 'forum/account/login.html', 'authentication_form': forms.AuthenticationForm},
          name='login')
    , url(r'^account/logout/$', views.logout_view, name='logout')
