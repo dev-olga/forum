@@ -17,3 +17,7 @@ label, input, textarea{
     font-style: italic;
     font-size: 0.9em;
 }
+
+.validation-errors{
+    color: #f04124;
+}

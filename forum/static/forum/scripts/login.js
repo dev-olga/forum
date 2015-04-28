@@ -1,74 +1,42 @@
-//$(function() {
-//    var loginDialog;
-//    $("#login").click(function(e){
-//        e.preventDefault();
-//        e.stopPropagation();
-//        if (!loginDialog){
-//            $("#login-form").load($(this).attr("href"), function(data){
-//            data = $(data);
-//            var form = data.find("form").andSelf();
-//            loginDialog = data
-//                .dialog({
-//                    autoOpen: true,
-//                    height: "auto",
-//                    width: "auto",
-//                    modal: true,
-////                    buttons: {
-////                        Login: function() {
-////                             $.ajax({
-////                               type: form.attr("method"),
-////                               url: form.attr("action"),
-////                               data: $(form).serialize(),
-////                               success: function(data)
-////                               {
-////                                   alert(data);
-////                               },
-////                               error: function(data)
-////                               {
-////                                   alert(data);
-////                               }
-////                             });
-////                        },
-////                        Cancel: function() {
-////                          loginDialog.dialog( "close" );
-////                        }
-////                    },
-//                    title: "Login"
-//            });
-//            });
-//
-//        }
-//        else{
-//            loginDialog.dialog("open");
-//        }
-//        return false;
-//    });
-//});
-
 $(function() {
-    var loginDialog;
+
+
     $("#login").on('click', function(e){
+        var containerId = "login_form_container";
         e.preventDefault();
         e.stopPropagation();
-        $("#login-form .modal-body").load($(this).attr("href"), function(data){
-            $("#login #submit-login").click(function(e){
-                 $.ajax({
-                   type: form.attr("method"),
-                   url: form.attr("action"),
-                   data: $(form).serialize(),
-                   success: function(data)
-                   {
-                       alert(data);
-                   },
-                   error: function(data)
-                   {
-                       alert(data);
-                   }
-                 });
+        $("#" + containerId + " .modal-body").load($(this).attr("href"), function(data){
+
+            var form = $("#login_form");//$("#login-form .modal-body").find("form").andSelf();
+            $("#" + containerId + " #submit_login").on('click', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                form.submit();
             });
 
-            $("#login-form").modal();
+            form.on("submit", function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                $.ajax({
+                    type: form.attr("method"),
+                    url: form.attr("action"),
+                    data: $(this).serialize(),
+                    dataType: "json",
+                    traditional: true,
+                    success: function(data)
+                    {
+                        if(data.errors){
+                            form.find(".validation-errors").html(data.errors);
+                        }
+                        else if(data.redirect_to){
+                            window.location.replace(data.redirect_to);
+                        }
+                    }
+                });
+            });
+
+            $("#" + containerId).modal();
         });
-        return false;
+
     });
 });

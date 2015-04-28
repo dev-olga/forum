@@ -19,7 +19,7 @@ class AjaxResponseMixin(FormView):
         # it might do some processing (in the case of CreateView, it will
         # call form.save() for example).
         response = super(AjaxResponseMixin, self).form_valid(form)
-        if self. request.is_ajax():
+        if self.request.is_ajax():
             data = {
                 'response': 'ok'
             }

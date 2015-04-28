@@ -5,8 +5,8 @@ import forms
 
 urlpatterns = patterns(''
    , url(r'^$', views.IndexView.as_view(), name='index')
-   , url(r'^account/login/$', auth_views.login,
-         # views.LoginView.as_view(),
+   , url(r'^account/login/$', #auth_views.login,
+         views.LoginView.as_view(),
          { 'template_name' : 'forum/account/login.html', 'authentication_form': forms.AuthenticationForm},
          name='login')
    , url(r'^account/logout/$', views.logout_view, name='logout')
