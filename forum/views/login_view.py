@@ -24,7 +24,7 @@ class LoginView(FormView):
 
             auth.login(self.request, form.get_user())
             if self.request.is_ajax():
-                JsonResponse({'errors': '', 'redirect_to': self.success_url}, status=200)
+                return JsonResponse({'errors': ''}, status=200)
             else:
                 return super(LoginView, self).form_valid(form)
 

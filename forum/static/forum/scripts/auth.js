@@ -1,4 +1,5 @@
 $(function() {
+    var auth
 
     $("#login").on('click', function(e){
         var containerId = "login_form_container";
