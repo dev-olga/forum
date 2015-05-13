@@ -2,7 +2,7 @@ from django.db import models
 from datetime import datetime
 from django.core.files.storage import FileSystemStorage
 
-fs = FileSystemStorage(location="/static/forum/media/")
+fs = FileSystemStorage(location="forum/static/media/")
 
 
 class Category(models.Model):
