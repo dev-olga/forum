@@ -84,4 +84,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 AUTHENTICATION_BACKENDS = ('utils.auth_backends.EmailBackend',)
 LOGIN_REDIRECT_URL = ('forum:index')
-MEDIA_URL ='/static/media/'
+MEDIA_URL ='/forum/static/media/'

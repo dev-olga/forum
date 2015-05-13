@@ -1,4 +1,4 @@
-{% extends 'forum/layout/base.html' %}
+{% extends 'forum/base.html' %}
 
 {% block header %}
     <!-- HEADER -->
@@ -9,7 +9,7 @@
                 {% if user.is_authenticated %}
                     <a href="{% url 'forum:logout' %}">Log out</a>
                 {% else %}
-                    <a href="{% url 'forum:login' %}">Login</a>
+                    <a href="{% url 'forum:login' %}" id="login">Login</a>
                 {% endif %}
             </div>
         </div>

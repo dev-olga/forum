@@ -1,8 +1,6 @@
-{% extends "forum/layout/forum_base.html" %}
+{% extends "forum/forum_base.html" %}
 
-{% block title %}
-    {{ subcategory.name }}
-{% endblock %}
+{% block title %}{{ sub_category.name }}{% endblock %}
 
 {% block content %}
 
@@ -14,8 +12,7 @@
                 <form enctype="multipart/form-data" action="{% url "forum:subcategory" sub_category.id %}" method="post" >
                     <fieldset>
                         <legend>New thread</legend>
-                                            {% csrf_token %}
-                        {{ form }}
+                         {% include "forum/partial/form.html" with form=form %}
                         <input type="submit" value="Post" class="btn btn-default"/>
                     </fieldset>
                 </form>

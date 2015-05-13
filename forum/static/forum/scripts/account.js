@@ -19,20 +19,15 @@ $(function() {
             containerSelector.find(submitSelector).on('click', function(e){
                 e.preventDefault();
                 e.stopPropagation();
-                var form = containerSelector.find("form");
-                form.on("submit", function(e){submit(e, form);});
-                form.submit();
+                submit(containerSelector.find("form"));
             });
 
             containerSelector.modal();
         });
     }
 
-    var submit = function(e, form) {
-        console.log("submit");
+    var submit = function(form) {
         var self = form;
-        e.preventDefault();
-        e.stopPropagation();
         $.ajax({
             type: self.attr("method"),
             url: self.attr("action"),
@@ -42,7 +37,6 @@ $(function() {
             success: function(data)
             {
                 if(data.invalid){
-                    self.off("submit");
                     self.replaceWith(data.invalid);
                 }
                 else{
