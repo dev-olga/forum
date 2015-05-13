@@ -1,7 +1,7 @@
 from django import forms
 from forum import models
 from django.contrib.auth import forms as auth_forms
-import datetime
+from django.contrib.auth.models import User
 
 
 class BaseForumForm(forms.ModelForm):
@@ -57,6 +57,15 @@ class UserCreationForm(auth_forms.UserCreationForm):
     """
 
     class Meta(auth_forms.UserCreationForm.Meta):
-        fields = ("username", "email", "first_name", "last_name")
+        fields = ("username", "email")
 
     email = forms.EmailField(required=True)
+
+    def clean_email(self):
+        """
+        Validate that the supplied email address is unique.
+        """
+
+        if User.objects.filter(email__iexact=self.cleaned_data['email']):
+            raise forms.ValidationError("A user with that email already exists.")
+        return self.cleaned_data['email']
