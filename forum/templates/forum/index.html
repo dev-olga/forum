@@ -1,5 +1,5 @@
 
-{% extends 'forum/base.html' %}
+{% extends 'forum/layout/base.html' %}
 {% block title %}Dashboard{% endblock %}
 
 {% block header %}
@@ -74,7 +74,7 @@
             </div>
         {% endfor %}
     </div>
-    <div id="login_form_container" class="modal fade " role="dialog"  tabindex="-1"  aria-hidden="true">
+    <div id="login-form-container" class="modal fade " role="dialog"  tabindex="-1"  aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -87,13 +87,13 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary" id="submit_login">Log In</button>
+                  <button type="submit" class="btn btn-primary" id="submit-login">Log In</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="registration-form" class="modal fade " role="dialog"  tabindex="-1"  aria-hidden="true">
+    <div id="registration-form-container" class="modal fade " role="dialog"  tabindex="-1"  aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -106,7 +106,7 @@
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary" id="submit_login">OK</button>
+                  <button type="submit" class="btn btn-primary" id="submit-registration">OK</button>
                 </div>
             </div>
         </div>

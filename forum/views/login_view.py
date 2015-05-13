@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.utils.functional import lazy
 from django.utils.http import is_safe_url
 from django.views.generic import FormView
+from django.template.loader import render_to_string
 from forum import forms
 
 
@@ -24,13 +25,16 @@ class LoginView(FormView):
 
             auth.login(self.request, form.get_user())
             if self.request.is_ajax():
-                return JsonResponse({'errors': ''}, status=200)
+                return JsonResponse({'invalid': ''}, status=200)
             else:
                 return super(LoginView, self).form_valid(form)
 
-    def form_invalid(self, form):
+    def form_invalid(self, form, **kwargs):
         if self.request.is_ajax():
-            return JsonResponse({'errors': 'Your username and password didn\'t match. Please try again.'}, status=200)
+            rendered = render_to_string(template_name=self.template_name,
+                                        context=self.get_context_data(form=form),
+                                        request=self.request)
+            return JsonResponse({'invalid': rendered, }, status=200)
         else:
             return super(LoginView, self).form_invalid(form)
 

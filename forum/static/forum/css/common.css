@@ -18,6 +18,6 @@ label, input, textarea{
     font-size: 0.9em;
 }
 
-.validation-errors{
+.validation-error{
     color: #f04124;
 }

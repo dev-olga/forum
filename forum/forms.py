@@ -11,17 +11,12 @@ class BaseForumForm(forms.ModelForm):
         }
         widgets = {
             'message': forms.Textarea(attrs={'cols': 40, 'rows': 5})
-
         }
 
     def __init__(self, user, *args, **kwargs):
         super(BaseForumForm, self).__init__(*args, **kwargs)
         if user and user.is_authenticated():
             self.set_user(user)
-
-    # def save(self, *args, **kwargs):
-    #     self.instance.date = datetime.datetime.now()
-    #     super(BaseForumForm, self).save(*args, **kwargs)
 
     def set_user(self, user):
         self.instance.user = user
@@ -42,13 +37,6 @@ class PostForm(BaseForumForm):
     class Meta(BaseForumForm.Meta):
         model = models.Post
         fields = ['user_name', 'user_email', 'message', 'image']
-
-    # def __init__(self, user, *args, **kwargs):
-    #     super(PostForm, self).__init__(user, *args, **kwargs)
-
-    # def __init__(self, user, parent_post, *args, **kwargs):
-    #     super(PostForm, self).__init__(user, *args, **kwargs)
-    #     self.instance.parent_post = parent_post
 
 
 class AuthenticationForm(auth_forms.AuthenticationForm):
