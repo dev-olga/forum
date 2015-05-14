@@ -1,10 +1,9 @@
 from django.core.urlresolvers import reverse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.utils.functional import lazy
 from django.utils.http import is_safe_url
-from django.contrib import auth
-from django.contrib.auth import logout
+
 from django.shortcuts import redirect
 from django.views.generic import FormView
 from django.template.loader import render_to_string
@@ -50,7 +49,7 @@ class LoginView(BaseAccountView):
             if not is_safe_url(url=self.success_url, host=self.request.get_host()):
                 return HttpResponseRedirect(self.request.path)
 
-            auth.login(self.request, form.get_user())
+            login(self.request, form.get_user())
 
             return super(LoginView, self).form_valid(form)
 

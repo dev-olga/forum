@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect, Http404, JsonResponse
 from django.core.urlresolvers import reverse
 from django.utils.decorators import method_decorator
+from django.views.generic import View
+import datetime
 
 from forum import forms
 from forum import models
@@ -53,3 +55,20 @@ class ThreadView(BaseForumView):
         context['form'] = form
         context['reply_to'] = reply_to
         return context
+
+
+class CheckNewPosts(View):
+
+    def get(self, id, last_loaded):
+        last_date = datetime.datetime.fromtimestamp(float(last_loaded))
+        new_posts = len(models.Post.objects.filter(thread__id=id, date__gte=last_date)[:1]) > 0
+        return JsonResponse({'new_posts': new_posts}, status=200)
+
+# def check_new_posts(request, id, last_loaded):
+#     last_date = datetime.datetime.fromtimestamp(float(last_loaded))
+#     try:
+#         post = models.Post.objects.filter(thread__id=id, date__gte=last_date)[:1]
+#     except Exception as ex:
+#         pass
+#     if post:
+#         pass
