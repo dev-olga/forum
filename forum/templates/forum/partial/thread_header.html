@@ -11,8 +11,8 @@
             <h4>
                 <strong>#{{ thread.id }} | {{ thread.subject }}</strong>
                 <span>
-                    Created: {{ thread.date|date:"M d Y" }}
-                    by {{ thread.user_name }}
+                    Created: {{ thread.date|date:"d.m.Y" }}
+                    by {{ thread.user_name|default:"Guest" }}
                 </span>
                 <a href="{% url 'forum:thread' thread.id %}"
                        class="btn btn-default" >Reply</a>

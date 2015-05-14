@@ -9,7 +9,8 @@
           <h3 class="panel-title">{{ sub_category.name }}</h3>
         </div>
         <div class="panel-body">
-                <form enctype="multipart/form-data" action="{% url "forum:subcategory" sub_category.id %}" method="post" >
+                <form enctype="multipart/form-data" action="{% url "forum:subcategory" sub_category.id %}"
+                      method="post" class="col-md-6">
                     <fieldset>
                         <legend>New thread</legend>
                          {% include "forum/partial/form.html" with form=form %}

@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-
+    <h1><a href="{% url 'forum:subcategory' thread.sub_category.id %}">{{ thread.sub_category.name }}</a></h1>
     <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title">{{ thread.subject }}</h3>
@@ -18,7 +18,7 @@
                       {% else %}
                       {% url "forum:thread" thread.id %}
                       {% endif %}"
-                  method="post" >
+                  method="post"  class="col-md-6">
                     <fieldset>
                         <legend>Reply</legend>
                             {% include "forum/partial/form.html" with form=form %}

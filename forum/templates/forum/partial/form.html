@@ -1,11 +1,12 @@
 {% csrf_token %}
+{% load form_filters %}
 <div class="validation-error">
     {{ form.non_field_errors }}
 </div>
 {% for field in form %}
     <div class="form-group">
-        {{ field.label }}
-        <span class="validation-error">{{ field.errors }}</span>
-        {{ field }}
+        <label class="control-label" for="{{ field.name }}">{{ field.label }}</label>
+        <div class="validation-error">{{ field.errors }}</div>
+        {{ field|add_css_to_field:"form-control" }}
     </div>
 {% endfor %}

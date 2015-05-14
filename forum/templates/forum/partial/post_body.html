@@ -1,6 +1,6 @@
 <p>
-    #{{ post.id }} Created: {{ post.date|date:"M d Y" }}
-    by {{ thread.user_name }}
+    #{{ post.id }} Created: {{ thread.date|date:"d.m.Y" }}
+    by {{ thread.user_name|default:"Guest" }}
 </p>
 <p>
     {{ post.message }}
