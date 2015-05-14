@@ -1,6 +1,6 @@
-<form method="post" action="{% url 'forum:registration' %}" id="registration-form">
-    {% include "forum/partial/form.html" with form=form %}
-    {% if show_button %}
+<form method="post" action="{% url 'forum:registration' %}" id="registration-form" class="form-horizontal">
+    {% include "forum/partial/form_horizontal.html" with form=form %}
+    {% if show_buttons %}
         <input type="submit" value="Create account" />
     {% endif %}
 </form>

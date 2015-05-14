@@ -21,3 +21,7 @@ label, input, textarea{
 .validation-error{
     color: #f04124;
 }
+
+.control-label{
+    font-size: 1em;
+}

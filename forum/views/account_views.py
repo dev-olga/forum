@@ -6,12 +6,36 @@ from django.utils.http import is_safe_url
 from django.contrib import auth
 from django.contrib.auth import logout
 from django.shortcuts import redirect
+from django.views.generic import FormView
+from django.template.loader import render_to_string
+from django.http import JsonResponse
 
 from forum import forms
-from forum.views.base_ajax_view import BaseAjaxView
 
 
-class LoginView(BaseAjaxView):
+class BaseAccountView(FormView):
+    def form_valid(self, form):
+        if self.request.is_ajax():
+            return JsonResponse({'response': '', 'is_valid': True}, status=200)
+        else:
+            return super(BaseAccountView, self).form_valid(form)
+
+    def form_invalid(self, form):
+        if self.request.is_ajax():
+            rendered = render_to_string(template_name=self.template_name,
+                                        context=self.get_context_data(form=form),
+                                        request=self.request)
+            return JsonResponse({'response': rendered, 'is_valid': False}, status=200)
+        else:
+            return super(BaseAccountView, self).form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(BaseAccountView, self).get_context_data(**kwargs)
+        context['show_buttons'] = not self.request.is_ajax()
+        return context
+
+
+class LoginView(BaseAccountView):
     """
     Login view
     """
@@ -38,7 +62,7 @@ def logout_view(request, redirect_to=''):
     return redirect(reverse('forum:index'))
 
 
-class RegistrationView(BaseAjaxView):
+class RegistrationView(BaseAccountView):
     """
     New user registration view
     """

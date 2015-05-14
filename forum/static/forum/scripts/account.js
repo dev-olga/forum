@@ -1,28 +1,26 @@
 $(function() {
 
     $("#login").on('click', function(e){
-        var containerId = "login-form-container";
         e.preventDefault();
         e.stopPropagation();
-        initModalDialog(this, $("#login-form-container"),  "#submit-login");
+        initModalDialog(this, $("#login-form-container"), "#submit-login");
     });
 
     $("#registration").on('click', function(e){
-        var containerId = "registration-form-container";
         e.preventDefault();
         e.stopPropagation();
-        initModalDialog(this, $("#registration-form-container"),  "#submit-registration");
+        initModalDialog(this, $("#registration-form-container"), "#submit-registration");
     });
 
-    var initModalDialog = function(sender, containerSelector, submitSelector){
-        containerSelector.find(".modal-body").load($(sender).attr("href"), function(data){
-            containerSelector.find(submitSelector).on('click', function(e){
+    var initModalDialog = function(sender, container, submitSelector){
+        container.find(".modal-body").load($(sender).attr("href"), function(data){
+            container.find(submitSelector).on('click', function(e){
                 e.preventDefault();
                 e.stopPropagation();
-                submit(containerSelector.find("form"));
+                submit(container.find("form"));
             });
 
-            containerSelector.modal();
+            container.modal();
         });
     }
 
@@ -36,8 +34,8 @@ $(function() {
             traditional: true,
             success: function(data)
             {
-                if(data.invalid){
-                    self.replaceWith(data.invalid);
+                if(!data.is_valid){
+                    self.replaceWith(data.response);
                 }
                 else{
                     window.location.replace(window.location.href);
