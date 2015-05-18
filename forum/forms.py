@@ -6,9 +6,6 @@ from django.contrib.auth.models import User
 
 class BaseForumForm(forms.ModelForm):
     class Meta:
-        labels = {
-            'image': 'Upload file'
-        }
         widgets = {
             'message': forms.Textarea(attrs={'cols': 40, 'rows': 5})
         }
@@ -29,6 +26,9 @@ class BaseForumForm(forms.ModelForm):
 
 class ThreadForm(BaseForumForm):
     class Meta(BaseForumForm.Meta):
+        labels = {
+            'image': 'Upload image'
+        }
         model = models.Thread
         fields = ['subject', 'user_name', 'user_email', 'message', 'image']
 
@@ -36,7 +36,7 @@ class ThreadForm(BaseForumForm):
 class PostForm(BaseForumForm):
     class Meta(BaseForumForm.Meta):
         model = models.Post
-        fields = ['user_name', 'user_email', 'message', 'image']
+        fields = ['user_name', 'user_email', 'message']
 
 
 class AuthenticationForm(auth_forms.AuthenticationForm):

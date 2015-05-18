@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-9">
             {% load forum_filters %}
             {% for category in categories|filter_by_permissions:user %}
                 <p>
@@ -28,10 +28,10 @@
                 </p>
             {% endfor %}
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="pull-right">
                 {% load staticfiles %}
-                <img class="img-responsive" alt="Logo" src="{% static 'forum/images/logo.png' %}"></imag>
+                <img class="img-responsive logo" alt="Logo" src="{% static 'forum/images/logo.png' %}" ></imag>
             </div>
         </div>
     </div>

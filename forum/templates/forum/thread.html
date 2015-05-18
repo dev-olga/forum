@@ -5,8 +5,13 @@
 {% endblock %}
 
 {% block content %}
-    <h1><a href="{% url 'forum:subcategory' thread.sub_category.id %}">{{ thread.sub_category.name }}</a></h1>
-    <div class="panel panel-primary">
+    <h1>
+        <a  class="{% if thread.sub_category.category.auth_only %}text-warning{% endif %}"
+                href="{% url 'forum:subcategory' thread.sub_category.id %}">
+            {{ thread.sub_category.name }}
+        </a>
+    </h1>
+    <div class="panel {% if thread.sub_category.category.auth_only %}panel-warning{% else %}panel-primary{% endif %}">
         <div class="panel-heading">
           <h3 class="panel-title">{{ thread.subject }}</h3>
         </div>

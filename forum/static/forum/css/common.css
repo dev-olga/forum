@@ -31,3 +31,9 @@ label, input, textarea{
     position: fixed;
     right: 10px;
 }
+.logo {
+    margin: 10px 0;
+}
+.index.logo {
+    margin: 30px 0;
+}
