@@ -25,3 +25,9 @@ label, input, textarea{
 .control-label{
     font-size: 1em;
 }
+
+#new-posts-notification{
+    bottom: 0;
+    position: fixed;
+    right: 10px;
+}

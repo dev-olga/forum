@@ -54,15 +54,20 @@ class ThreadView(BaseForumView):
         context['thread'] = thread
         context['form'] = form
         context['reply_to'] = reply_to
+        context['thread_loading_date'] = int(datetime.datetime.now().strftime("%s"))
         return context
 
 
 class CheckNewPosts(View):
 
-    def get(self, id, last_loaded):
-        last_date = datetime.datetime.fromtimestamp(float(last_loaded))
-        new_posts = len(models.Post.objects.filter(thread__id=id, date__gte=last_date)[:1]) > 0
-        return JsonResponse({'new_posts': new_posts}, status=200)
+    def get(self, request, id, last_loaded):
+        try:
+            last_date = datetime.datetime.fromtimestamp(float(last_loaded))
+            new_posts = len(models.Post.objects.filter(thread__id=id, date__gte=last_date)[:1]) > 0
+            return JsonResponse({'new_posts': new_posts}, status=200)
+        except Exception as ex:
+            #todo: logs
+            return JsonResponse({'new_posts': False}, status=200)
 
 # def check_new_posts(request, id, last_loaded):
 #     last_date = datetime.datetime.fromtimestamp(float(last_loaded))

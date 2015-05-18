@@ -7,6 +7,6 @@
     <div class="form-group">
         <label class="control-label" for="{{ field.name }}">{{ field.label }}</label>
         <div class="validation-error">{{ field.errors }}</div>
-        {{ field|add_css_to_field:"form-control" }}
+        {{ field|add_css_class_to_field:"form-control" }}
     </div>
 {% endfor %}

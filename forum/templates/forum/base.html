@@ -8,6 +8,7 @@
     <script src="//code.jquery.com/jquery-2.1.3.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="{% static 'forum/scripts/account.js' %}"></script>
+
 </head>
 
 <body>
@@ -17,5 +18,8 @@
     {% include "forum/partial/account/login_modal.html"  %}
     {% include "forum/partial/account/registration_modal.html"  %}
     </div>
+
+
+{% block scripts %}{% endblock %}
 </body>
 </html>
