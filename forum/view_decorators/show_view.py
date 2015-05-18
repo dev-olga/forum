@@ -32,3 +32,13 @@ def sub_category_login_required(view):
 
 def show_category(category, user):
     return not category.auth_only or (user.is_authenticated and user.is_active)
+
+
+def admin_login_required(view):
+    @wraps(view)
+    def inner(request, id, *args, **kwargs):
+        if not request.user.is_superuser:
+            raise PermissionDenied
+        return view(request, id, *args, **kwargs)
+
+    return inner

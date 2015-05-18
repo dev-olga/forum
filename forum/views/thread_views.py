@@ -8,12 +8,12 @@ import datetime
 from forum import forms
 from forum import models
 from forum.views.base_forum_view import BaseForumView
-from forum.view_decorators.show_view import thread_login_required
+from forum.view_decorators.show_view import thread_login_required, admin_login_required
 
 
 class ThreadView(BaseForumView):
 
-    template_name = 'forum/thread.html'
+    template_name = 'forum/thread/thread.html'
 
     @method_decorator(thread_login_required)
     def dispatch(self, *args, **kwargs):
@@ -58,18 +58,25 @@ class ThreadView(BaseForumView):
         return context
 
 
-class CheckNewPosts(View):
+class CheckNewPostsView(View):
 
     def get(self, request, id, last_loaded):
         last_date = datetime.datetime.fromtimestamp(float(last_loaded))
         new_posts = len(models.Post.objects.filter(thread__id=id, date__gte=last_date)[:1]) > 0
         return JsonResponse({'new_posts': new_posts}, status=200)
 
-# def check_new_posts(request, id, last_loaded):
-#     last_date = datetime.datetime.fromtimestamp(float(last_loaded))
-#     try:
-#         post = models.Post.objects.filter(thread__id=id, date__gte=last_date)[:1]
-#     except Exception as ex:
-#         pass
-#     if post:
-#         pass
+
+class EditPostView(View):
+    template_name = 'forum/thread/edit_post.html'
+
+    @method_decorator(admin_login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(EditPostView, self).dispatch(*args, **kwargs)
+
+    def get(self, request, id, post_id):
+        pass
+    # return render(request, self.template_name, self._get_context(
+    #     id=id, form=None, user=request.user, reply_to=reply_to))
+
+    def post(self, request, id, post_id):
+        pass

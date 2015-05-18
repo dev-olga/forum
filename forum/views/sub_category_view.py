@@ -11,7 +11,7 @@ from forum.view_decorators.show_view import sub_category_login_required
 
 class SubCategoryView(BaseForumView):
 
-    template_name = 'forum/sub_category.html'
+    template_name = 'forum/sub_category/sub_category.html'
 
 
     @method_decorator(sub_category_login_required)
