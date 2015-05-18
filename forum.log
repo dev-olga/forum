@@ -1,0 +1,91 @@
+[18/May/2015 14:53:42] WARNING [django.request:170] Not Found: /
+[18/May/2015 14:53:42] WARNING [django.request:170] Not Found: /favicon.ico
+[18/May/2015 14:53:43] WARNING [django.request:170] Not Found: /favicon.ico
+[18/May/2015 14:56:57] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check_new_posts/last_loaded=1431960928/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 64, in get
+    raise Exception('test')
+Exception: test
+[18/May/2015 14:56:59] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check_new_posts/last_loaded=1431960928/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 64, in get
+    raise Exception('test')
+Exception: test
+[18/May/2015 14:57:09] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check_new_posts/last_loaded=1431960928/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 64, in get
+    raise Exception('test')
+Exception: test
+[18/May/2015 14:57:19] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check_new_posts/last_loaded=1431960928/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 64, in get
+    raise Exception('test')
+Exception: test
+[18/May/2015 14:57:29] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check_new_posts/last_loaded=1431960928/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 64, in get
+    raise Exception('test')
+Exception: test
+[18/May/2015 14:57:39] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check_new_posts/last_loaded=1431960928/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 64, in get
+    raise Exception('test')
+Exception: test
+[18/May/2015 14:57:49] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check_new_posts/last_loaded=1431960928/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 64, in get
+    raise Exception('test')
+Exception: test
+[18/May/2015 14:57:59] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check_new_posts/last_loaded=1431960928/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 64, in get
+    raise Exception('test')
+Exception: test

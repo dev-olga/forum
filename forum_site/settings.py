@@ -47,6 +47,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'utils.middleware.ExceptionLoggingMiddleware'
 )
 
 ROOT_URLCONF = 'forum_site.urls'
@@ -83,5 +84,35 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 AUTHENTICATION_BACKENDS = ('utils.auth_backends.EmailBackend',)
-LOGIN_REDIRECT_URL = ('forum:index')
+# LOGIN_REDIRECT_URL = ('forum:index')
 MEDIA_URL ='/static/media/'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename': 'forum.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers':['file'],
+            'propagate': True,
+            'level':'ERROR',
+        },
+        'forum': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+        },
+    }
+}
