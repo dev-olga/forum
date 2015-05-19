@@ -36,9 +36,9 @@ def show_category(category, user):
 
 def admin_login_required(view):
     @wraps(view)
-    def inner(request, id, *args, **kwargs):
+    def inner(request, *args, **kwargs):
         if not request.user.is_superuser:
             raise PermissionDenied
-        return view(request, id, *args, **kwargs)
+        return view(request, *args, **kwargs)
 
     return inner

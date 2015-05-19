@@ -16,20 +16,20 @@
           <h3 class="panel-title">{{ thread.subject }}</h3>
         </div>
         <div class="panel-body">
-            <form enctype="multipart/form-data"
-                  action="
-                      {% if reply_to %}
-                      {% url "forum:reply_to_post" thread.id reply_to%}
-                      {% else %}
-                      {% url "forum:thread" thread.id %}
-                      {% endif %}"
-                  method="post"  class="col-md-6">
-                    <fieldset>
-                        <legend>Reply</legend>
-                            {% include "forum/partial/form.html" with form=form %}
-                        <input type="submit" value="Post" class="btn btn-default"/>
-                    </fieldset>
-                </form>
+            <form
+                action="
+                  {% if reply_to %}
+                  {% url "forum:reply_to_post" thread.id reply_to%}
+                  {% else %}
+                  {% url "forum:thread" thread.id %}
+                  {% endif %}"
+                method="post"  class="col-md-6">
+                <fieldset>
+                    <legend>Reply</legend>
+                        {% include "forum/partial/form.html" with form=form %}
+                    <input type="submit" value="Post" class="btn btn-default"/>
+                </fieldset>
+            </form>
         </div>
     </div>
 

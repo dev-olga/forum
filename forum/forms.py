@@ -39,6 +39,7 @@ class PostForm(BaseForumForm):
         fields = ['user_name', 'user_email', 'message']
 
 
+
 class AuthenticationForm(auth_forms.AuthenticationForm):
     """
     Form for authorization by username and email
@@ -57,7 +58,7 @@ class UserCreationForm(auth_forms.UserCreationForm):
     """
 
     class Meta(auth_forms.UserCreationForm.Meta):
-        fields = ("username", "email")
+        fields = ["username", "email"]
 
     email = forms.EmailField(required=True)
 
@@ -69,3 +70,10 @@ class UserCreationForm(auth_forms.UserCreationForm):
         if User.objects.filter(email__iexact=self.cleaned_data['email']):
             raise forms.ValidationError("A user with that email already exists.")
         return self.cleaned_data['email']
+
+
+class PostUpdateForm(forms.ModelForm):
+    class Meta(BaseForumForm.Meta):
+        model = models.Post
+        exclude = []
+        # fields = ['user_name', 'user_email', 'message']

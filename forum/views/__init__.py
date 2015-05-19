@@ -1,4 +1,4 @@
-from index_view import IndexView
+from index_views import IndexView
 from account_views import LoginView, logout_view, RegistrationView
-from sub_category_view import SubCategoryView
-from thread_views import ThreadView, CheckNewPostsView, EditPostView
+from sub_category_views import SubCategoryView
+from thread_views import ThreadView, CheckNewPostsView
