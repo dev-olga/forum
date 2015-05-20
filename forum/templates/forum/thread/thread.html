@@ -42,7 +42,14 @@
                     <div class="panel-body">
                         <div class=pull-right>
                             <a href="{% url 'forum:reply_to_post' thread.id post.id %}"
-                                   class="btn btn-default pull-right" >Reply</a>
+                                   class="btn btn-default" >Reply</a>
+                            {% if user.is_superuser %}
+                                 <a href="{% url 'forum:update_post' post.id %}"
+                                   class="btn btn-danger" data-action='post-update'>Update</a>
+{#                                 <a href="{% url 'forum:delete_post' post.id %}"#}
+{#                                   class="btn btn-danger" >Delete</a>#}
+{#                                {% include "forum/partial/modal.html" with id='post-update-form-container' title='Update' %}#}
+                            {% endif %}
                         </div>
                         {% include "forum/partial/post_body.html" with post=post%}
                     </div>
@@ -68,4 +75,8 @@
             newPostsListener.start("{% url 'forum:check_new_posts' thread.id thread_loading_date%}")
         });
     </script>
+    {% if user.is_superuser %}
+        <script src="{% static 'forum/scripts/thread_management.js' %}"></script>
+        <script src="{% static 'forum/scripts/post_management.js' %}"></script>
+    {% endif %}
 {% endblock %}

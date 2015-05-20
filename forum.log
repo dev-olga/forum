@@ -7777,3 +7777,647 @@ Traceback (most recent call last):
   File "/home/user/projects/django/github/forum/views/sub_category_views.py", line 38, in get_context_data
     context = super(SubCategoryView, self)._get_context()
 AttributeError: 'super' object has no attribute '_get_context'
+[20/May/2015 12:50:53] ERROR [django.request:256] Internal Server Error: /forum/posts/9/edit
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 108, in get_response
+    response = middleware_method(request)
+  File "/usr/local/lib/python2.7/dist-packages/django/middleware/common.py", line 74, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 647, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 522, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum_site/urls.py", line 5, in <module>
+    , url(r'^forum/', include('forum.urls', namespace='forum'))
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/urls/__init__.py", line 33, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum/urls.py", line 2, in <module>
+    import views
+  File "/home/user/projects/django/github/forum/views/__init__.py", line 5, in <module>
+    from post_views import EditPostView
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 33, in <module>
+    class EditPostView(UpdateView, AjaxFormViewMixin):
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 40, in EditPostView
+    @method_decorator(admin_login_required)
+NameError: name 'method_decorator' is not defined
+[20/May/2015 12:53:26] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check-new-posts/last_loaded=1432126287/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum_site/urls.py", line 5, in <module>
+    , url(r'^forum/', include('forum.urls', namespace='forum'))
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/urls/__init__.py", line 33, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum/urls.py", line 2, in <module>
+    import views
+  File "/home/user/projects/django/github/forum/views/__init__.py", line 5, in <module>
+    from post_views import EditPostView
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 34, in <module>
+    class EditPostView(UpdateView, AjaxResponseMixin):
+NameError: name 'AjaxResponseMixin' is not defined
+[20/May/2015 12:53:36] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check-new-posts/last_loaded=1432126287/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum_site/urls.py", line 5, in <module>
+    , url(r'^forum/', include('forum.urls', namespace='forum'))
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/urls/__init__.py", line 33, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum/urls.py", line 2, in <module>
+    import views
+  File "/home/user/projects/django/github/forum/views/__init__.py", line 5, in <module>
+    from post_views import EditPostView
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 34, in <module>
+    class EditPostView(UpdateView, AjaxResponseMixin):
+NameError: name 'AjaxResponseMixin' is not defined
+[20/May/2015 12:53:46] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check-new-posts/last_loaded=1432126287/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum_site/urls.py", line 5, in <module>
+    , url(r'^forum/', include('forum.urls', namespace='forum'))
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/urls/__init__.py", line 33, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum/urls.py", line 2, in <module>
+    import views
+  File "/home/user/projects/django/github/forum/views/__init__.py", line 5, in <module>
+    from post_views import EditPostView
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 34, in <module>
+    class EditPostView(UpdateView, AjaxResponseMixin):
+NameError: name 'AjaxResponseMixin' is not defined
+[20/May/2015 12:53:56] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check-new-posts/last_loaded=1432126287/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum_site/urls.py", line 5, in <module>
+    , url(r'^forum/', include('forum.urls', namespace='forum'))
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/urls/__init__.py", line 33, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum/urls.py", line 2, in <module>
+    import views
+  File "/home/user/projects/django/github/forum/views/__init__.py", line 5, in <module>
+    from post_views import EditPostView
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 34, in <module>
+    class EditPostView(UpdateView, AjaxResponseMixin):
+NameError: name 'AjaxResponseMixin' is not defined
+[20/May/2015 12:54:06] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check-new-posts/last_loaded=1432126287/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum_site/urls.py", line 5, in <module>
+    , url(r'^forum/', include('forum.urls', namespace='forum'))
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/urls/__init__.py", line 33, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum/urls.py", line 2, in <module>
+    import views
+  File "/home/user/projects/django/github/forum/views/__init__.py", line 5, in <module>
+    from post_views import EditPostView
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 34, in <module>
+    class EditPostView(UpdateView, AjaxResponseMixin):
+NameError: name 'AjaxResponseMixin' is not defined
+[20/May/2015 12:54:16] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check-new-posts/last_loaded=1432126287/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum_site/urls.py", line 5, in <module>
+    , url(r'^forum/', include('forum.urls', namespace='forum'))
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/urls/__init__.py", line 33, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum/urls.py", line 2, in <module>
+    import views
+  File "/home/user/projects/django/github/forum/views/__init__.py", line 5, in <module>
+    from post_views import EditPostView
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 34, in <module>
+    class EditPostView(UpdateView, AjaxResponseMixin):
+NameError: name 'AjaxResponseMixin' is not defined
+[20/May/2015 12:54:26] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check-new-posts/last_loaded=1432126287/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum_site/urls.py", line 5, in <module>
+    , url(r'^forum/', include('forum.urls', namespace='forum'))
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/urls/__init__.py", line 33, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum/urls.py", line 2, in <module>
+    import views
+  File "/home/user/projects/django/github/forum/views/__init__.py", line 5, in <module>
+    from post_views import EditPostView
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 34, in <module>
+    class EditPostView(UpdateView, AjaxResponseMixin):
+NameError: name 'AjaxResponseMixin' is not defined
+[20/May/2015 12:54:36] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check-new-posts/last_loaded=1432126287/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum_site/urls.py", line 5, in <module>
+    , url(r'^forum/', include('forum.urls', namespace='forum'))
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/urls/__init__.py", line 33, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum/urls.py", line 2, in <module>
+    import views
+  File "/home/user/projects/django/github/forum/views/__init__.py", line 5, in <module>
+    from post_views import EditPostView
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 34, in <module>
+    class EditPostView(UpdateView, AjaxResponseMixin):
+NameError: name 'AjaxResponseMixin' is not defined
+[20/May/2015 12:54:46] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check-new-posts/last_loaded=1432126287/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum_site/urls.py", line 5, in <module>
+    , url(r'^forum/', include('forum.urls', namespace='forum'))
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/urls/__init__.py", line 33, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum/urls.py", line 2, in <module>
+    import views
+  File "/home/user/projects/django/github/forum/views/__init__.py", line 5, in <module>
+    from post_views import EditPostView
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 34, in <module>
+    class EditPostView(UpdateView, AjaxResponseMixin):
+NameError: name 'AjaxResponseMixin' is not defined
+[20/May/2015 12:54:56] ERROR [django.request:256] Internal Server Error: /forum/thread/6/check-new-posts/last_loaded=1432126287/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum_site/urls.py", line 5, in <module>
+    , url(r'^forum/', include('forum.urls', namespace='forum'))
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/urls/__init__.py", line 33, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum/urls.py", line 2, in <module>
+    import views
+  File "/home/user/projects/django/github/forum/views/__init__.py", line 5, in <module>
+    from post_views import EditPostView
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 34, in <module>
+    class EditPostView(UpdateView, AjaxResponseMixin):
+NameError: name 'AjaxResponseMixin' is not defined
+[20/May/2015 12:55:02] ERROR [django.request:256] Internal Server Error: /forum/thread/6/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum_site/urls.py", line 5, in <module>
+    , url(r'^forum/', include('forum.urls', namespace='forum'))
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/urls/__init__.py", line 33, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum/urls.py", line 2, in <module>
+    import views
+  File "/home/user/projects/django/github/forum/views/__init__.py", line 5, in <module>
+    from post_views import EditPostView
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 34, in <module>
+    class EditPostView(UpdateView, AjaxResponseMixin):
+NameError: name 'AjaxResponseMixin' is not defined
+[20/May/2015 12:58:59] ERROR [django.request:256] Internal Server Error: /forum/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 119, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 366, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 402, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 396, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum_site/urls.py", line 5, in <module>
+    , url(r'^forum/', include('forum.urls', namespace='forum'))
+  File "/usr/local/lib/python2.7/dist-packages/django/conf/urls/__init__.py", line 33, in include
+    urlconf_module = import_module(urlconf_module)
+  File "/usr/lib/python2.7/importlib/__init__.py", line 37, in import_module
+    __import__(name)
+  File "/home/user/projects/django/github/forum/urls.py", line 2, in <module>
+    import views
+  File "/home/user/projects/django/github/forum/views/__init__.py", line 2, in <module>
+    from account_views import LoginView, logout_view, RegistrationView
+  File "/home/user/projects/django/github/forum/views/account_views.py", line 31, in <module>
+    class LoginView(FormView, mixins.ModalDialogMixin, mixins.AjaxResponseMixin):
+NameError: name 'FormView' is not defined
+[20/May/2015 13:48:33] ERROR [django.request:256] Internal Server Error: /forum/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/index_views.py", line 14, in get
+    return render(request, self.template_name, {'categories': categories, 'latest_threads': latest_threads})
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 99, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 113, in render
+    compiled_parent = self.get_parent(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 110, in get_parent
+    return context.template.engine.get_template(parent)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/engine.py", line 167, in get_template
+    template, origin = self.find_template(template_name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/engine.py", line 141, in find_template
+    source, display_name = loader(name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loaders/base.py", line 13, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loaders/base.py", line 23, in load_template
+    template = Template(source, origin, template_name, self.engine)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 190, in __init__
+    self.nodelist = engine.compile_string(template_string, origin)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/engine.py", line 261, in compile_string
+    return parser.parse()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 1010, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 255, in do_include
+    (bits[0], option))
+TemplateSyntaxError: Unknown argument for u'include' tag: u"ok-button-id='submit-login'".
+[20/May/2015 13:50:01] ERROR [django.request:256] Internal Server Error: /forum/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/index_views.py", line 14, in get
+    return render(request, self.template_name, {'categories': categories, 'latest_threads': latest_threads})
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 99, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 151, in render
+    template = context.template.engine.get_template(template)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/engine.py", line 167, in get_template
+    template, origin = self.find_template(template_name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/engine.py", line 141, in find_template
+    source, display_name = loader(name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loaders/base.py", line 13, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loaders/base.py", line 23, in load_template
+    template = Template(source, origin, template_name, self.engine)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 190, in __init__
+    self.nodelist = engine.compile_string(template_string, origin)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/engine.py", line 261, in compile_string
+    return parser.parse()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 339, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 395, in invalid_block_tag
+    raise self.error(token, "Invalid block tag: '%s'" % command)
+TemplateSyntaxError: Invalid block tag: 'id'
+[20/May/2015 14:03:00] ERROR [django.request:256] Internal Server Error: /forum/thread/6/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 15, in inner
+    return view(request, id, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 20, in dispatch
+    return super(ThreadView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 24, in get
+    id=id, form=None, user=request.user, reply_to=reply_to_id))
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 98, in render_to_string
+    template = get_template(template_name, using=using)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 35, in get_template
+    return engine.get_template(template_name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/backends/django.py", line 30, in get_template
+    return Template(self.engine.get_template(template_name, dirs))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/engine.py", line 167, in get_template
+    template, origin = self.find_template(template_name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/engine.py", line 141, in find_template
+    source, display_name = loader(name, dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loaders/base.py", line 13, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loaders/base.py", line 23, in load_template
+    template = Template(source, origin, template_name, self.engine)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 190, in __init__
+    self.nodelist = engine.compile_string(template_string, origin)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/engine.py", line 261, in compile_string
+    return parser.parse()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 210, in do_extends
+    nodelist = parser.parse()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 184, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 341, in parse
+    compiled_result = compile_func(self, token)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 1010, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 339, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 394, in invalid_block_tag
+    (command, get_text_list(["'%s'" % p for p in parse_until])))
+TemplateSyntaxError: Invalid block tag: '<script', expected 'elif', 'else' or 'endif'
+[20/May/2015 14:14:09] ERROR [django.request:256] Internal Server Error: /forum/posts/9/edit
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 42, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 19, in dispatch
+    return super(UpdatePostView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 268, in get
+    return super(BaseUpdateView, self).get(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 206, in get
+    return self.render_to_response(self.get_context_data(form=form))
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 31, in get_context_data
+    kwargs={'pk': self.get_object().id})
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 579, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 496, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'post-edit' with arguments '()' and keyword arguments '{'pk': 9}' not found. 0 pattern(s) tried: []
+[20/May/2015 14:14:34] ERROR [django.request:256] Internal Server Error: /forum/posts/9/edit
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 42, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 19, in dispatch
+    return super(UpdatePostView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 268, in get
+    return super(BaseUpdateView, self).get(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 206, in get
+    return self.render_to_response(self.get_context_data(form=form))
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 31, in get_context_data
+    kwargs={'pk': self.get_object().id})
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 579, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 496, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'post-edit' with arguments '()' and keyword arguments '{'pk': 9}' not found. 0 pattern(s) tried: []
+[20/May/2015 14:14:48] ERROR [django.request:256] Internal Server Error: /forum/posts/9/edit
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 42, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 19, in dispatch
+    return super(UpdatePostView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 268, in get
+    return super(BaseUpdateView, self).get(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 206, in get
+    return self.render_to_response(self.get_context_data(form=form))
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 31, in get_context_data
+    kwargs={'pk': self.get_object().id})
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 579, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 496, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'post-edit' with arguments '()' and keyword arguments '{'pk': 9}' not found. 0 pattern(s) tried: []
+[20/May/2015 14:15:34] ERROR [django.request:256] Internal Server Error: /forum/posts/9/edit
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 42, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 19, in dispatch
+    return super(UpdatePostView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 268, in get
+    return super(BaseUpdateView, self).get(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 206, in get
+    return self.render_to_response(self.get_context_data(form=form))
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 31, in get_context_data
+    kwargs={'pk': self.get_object().id})
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 579, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 496, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'update_post' with arguments '()' and keyword arguments '{'pk': 9}' not found. 0 pattern(s) tried: []
+[20/May/2015 14:16:41] ERROR [django.request:256] Internal Server Error: /forum/posts/9/edit
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 42, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 19, in dispatch
+    return super(UpdatePostView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 268, in get
+    return super(BaseUpdateView, self).get(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 206, in get
+    return self.render_to_response(self.get_context_data(form=form))
+  File "/home/user/projects/django/github/forum/views/post_views.py", line 31, in get_context_data
+    kwargs={'pk': self.get_object().id})
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 579, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 496, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'update_post' with arguments '()' and keyword arguments '{'pk': 9}' not found. 0 pattern(s) tried: []
+[20/May/2015 14:21:01] ERROR [django.request:256] Internal Server Error: /forum/posts/9/delete
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python2.7/dist-packages/django/template/response.py", line 133, in rendered_content
+    template = self._resolve_template(self.template_name)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/response.py", line 88, in _resolve_template
+    new_template = self.resolve_template(template)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/response.py", line 78, in resolve_template
+    return loader.select_template(template, using=self.using)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 76, in select_template
+    raise TemplateDoesNotExist(', '.join(template_name_list))
+TemplateDoesNotExist: forum/post_confirm_delete.html

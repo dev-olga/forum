@@ -4,12 +4,32 @@ from django.http import HttpResponseRedirect
 from django.utils.functional import lazy
 from django.utils.http import is_safe_url
 from django.shortcuts import redirect
+from django.views.generic import FormView
 
-from forum import forms
-from forum.views.base_views import BaseAjaxFormView
+from forum import forms, mixins
+# from forum.views.base_views import BaseAjaxFormView
 
 
-class LoginView(BaseAjaxFormView):
+# class LoginView(BaseAjaxFormView):
+#     """
+#     Login view
+#     """
+#
+#     template_name = 'forum/account/login.html'
+#     success_url = lazy(reverse, str)('forum:index')
+#     form_class = forms.AuthenticationForm
+#
+#     def form_valid(self, form, **kwargs):
+#         if form.is_valid():
+#             # Ensure the user-originating redirection url is safe.
+#             if not is_safe_url(url=self.success_url, host=self.request.get_host()):
+#                 return HttpResponseRedirect(self.request.path)
+#
+#             login(self.request, form.get_user())
+#
+#             return super(LoginView, self).form_valid(form)
+
+class LoginView(mixins.AjaxResponseMixin, mixins.ModalDialogMixin, FormView):
     """
     Login view
     """
@@ -19,14 +39,13 @@ class LoginView(BaseAjaxFormView):
     form_class = forms.AuthenticationForm
 
     def form_valid(self, form, **kwargs):
-        if form.is_valid():
-            # Ensure the user-originating redirection url is safe.
-            if not is_safe_url(url=self.success_url, host=self.request.get_host()):
-                return HttpResponseRedirect(self.request.path)
+        # Ensure the user-originating redirection url is safe.
+        if not is_safe_url(url=self.success_url, host=self.request.get_host()):
+            return HttpResponseRedirect(self.request.path)
 
-            login(self.request, form.get_user())
+        login(self.request, form.get_user())
 
-            return super(LoginView, self).form_valid(form)
+        return super(LoginView, self).form_valid(form)
 
 
 def logout_view(request, redirect_to=''):
@@ -36,7 +55,7 @@ def logout_view(request, redirect_to=''):
     return redirect(reverse('forum:index'))
 
 
-class RegistrationView(BaseAjaxFormView):
+class RegistrationView(mixins.AjaxResponseMixin, mixins.ModalDialogMixin, FormView):
     """
     New user registration view
     """

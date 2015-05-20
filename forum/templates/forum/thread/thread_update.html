@@ -1,9 +1,7 @@
-<form action="{{ action }}" method="post">
+<form action="" method="post">
     <fieldset>
-        <legend>Edit post</legend>
+        <legend>Edit thread</legend>
             {% include "forum/partial/form.html" with form=form %}
-        {% if show_buttons %}
         <input type="submit" value="Post" class="btn btn-default"/>
-        {% endif %}
     </fieldset>
 </form>

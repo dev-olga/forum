@@ -75,5 +75,10 @@ class UserCreationForm(auth_forms.UserCreationForm):
 class PostUpdateForm(forms.ModelForm):
     class Meta(BaseForumForm.Meta):
         model = models.Post
-        exclude = []
-        # fields = ['user_name', 'user_email', 'message']
+        fields = ['thread', 'message', 'parent_post']
+
+
+class ThreadUpdateForm(forms.ModelForm):
+    class Meta(BaseForumForm.Meta):
+        model = models.Thread
+        fields = ['sub_category', 'subject', 'message', 'image']
