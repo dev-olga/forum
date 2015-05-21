@@ -67,6 +67,9 @@ class CheckNewPostsView(generic.View):
         return JsonResponse({'new_posts': new_posts}, status=200)
 
 
+# Admin part
+
+
 class ThreadUpdateView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, generic.UpdateView):
     template_name = 'forum/thread/thread_update.html'
     template_name_suffix = ""
@@ -78,18 +81,11 @@ class ThreadUpdateView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, generic.Up
         return super(ThreadUpdateView, self).dispatch(*args, **kwargs)
 
     def get_success_url(self):
-        next_key = 'next'
-        if next_key in self.request.POST:
-            next = self.request.POST[next_key]
-        if not next:
-            next = reverse('forum:subcategory', kwargs={'id': self.get_object().sub_category.id})
-        return next
+        return reverse('forum:subcategory', kwargs={'id': self.get_object().sub_category.id})
 
     def get_context_data(self, **kwargs):
         context = super(ThreadUpdateView, self).get_context_data(**kwargs)
         context['action'] = reverse('forum:thread_update', kwargs={'pk': self.get_object().id})
-        if 'HTTP_REFERER' in self.request.META:
-            context['next'] = self.request.META['HTTP_REFERER']
         return context
 
 
@@ -98,3 +94,32 @@ class ThreadDeleteView(generic.DeleteView):
 
     def get_success_url(self):
         return reverse('forum:thread', kwargs={'id': self.get_object().sub_category.id})
+
+
+class PostUpdateView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, generic.UpdateView):
+    template_name = 'forum/thread/post_update.html'
+    template_name_suffix = ""
+    form_class = forms.PostUpdateForm
+    model = models.Post
+
+    @method_decorator(admin_login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(PostUpdateView, self).dispatch(*args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('forum:thread', kwargs={'id': self.get_object().thread.id})
+
+    def form_valid(self, form):
+        return super(PostUpdateView, self).form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super(PostUpdateView, self).get_context_data(**kwargs)
+        context['action'] = reverse('forum:post_update', kwargs={'pk': self.get_object().id})
+        return context
+
+
+class PostDeleteView(generic.DeleteView):
+    model = models.Post
+
+    def get_success_url(self):
+        return reverse('forum:thread', kwargs={'id': self.get_object().thread.id})
