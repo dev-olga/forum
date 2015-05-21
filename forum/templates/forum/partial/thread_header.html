@@ -19,8 +19,8 @@
 
                 {% if user.is_superuser %}
                      <a href="{% url 'forum:thread_update' thread.id %}"
-                       class="btn btn-danger" data-action='thread-update'>Update</a>
-                     <a href="{% url 'forum:thread_delete' thread.id %}" class="btn btn-danger" >Delete</a>
+                       class="btn btn-primary" data-action='thread-update'>Update</a>
+                     <a href="{% url 'forum:thread_delete' thread.id %}" class="btn btn-primary" >Delete</a>
 
                     {% include "forum/partial/modal.html" with id='thread-update-form-container' title='Update' %}
                 {% endif %}
