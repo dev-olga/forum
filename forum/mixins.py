@@ -1,5 +1,5 @@
 from django.views.generic import base
-from django.template.loader import render_to_string
+from django.views import generic
 from django.http import JsonResponse
 
 from forum import models
@@ -12,21 +12,20 @@ class CategoriesContextMixin(base.ContextMixin):
         return context
 
 
-class AjaxResponseMixin(object):
+class AjaxFormMixin(generic.FormView):
     def form_valid(self, form):
+        response = super(AjaxFormMixin, self).form_valid(form)
         if self.request.is_ajax():
             return JsonResponse({'response': '', 'is_valid': True, 'success_url': self.get_success_url()}, status=200)
         else:
-            return super(AjaxResponseMixin, self).form_valid(form)
+            return response
 
     def form_invalid(self, form):
+        response = super(AjaxFormMixin, self).form_invalid(form)
         if self.request.is_ajax():
-            rendered = render_to_string(template_name=self.template_name,
-                                        context=self.get_context_data(form=form),
-                                        request=self.request)
-            return JsonResponse({'response': rendered, 'is_valid': False}, status=200)
+            return JsonResponse({'response': response.rendered_content, 'is_valid': False}, status=200)
         else:
-            return super(AjaxResponseMixin, self).form_invalid(form)
+            return response
 
 
 class ModalDialogMixin(base.ContextMixin):

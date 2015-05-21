@@ -29,7 +29,7 @@ from forum import forms, mixins
 #
 #             return super(LoginView, self).form_valid(form)
 
-class LoginView(mixins.AjaxResponseMixin, mixins.ModalDialogMixin, FormView):
+class LoginView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, FormView):
     """
     Login view
     """
@@ -55,7 +55,7 @@ def logout_view(request, redirect_to=''):
     return redirect(reverse('forum:index'))
 
 
-class RegistrationView(mixins.AjaxResponseMixin, mixins.ModalDialogMixin, FormView):
+class RegistrationView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, FormView):
     """
     New user registration view
     """

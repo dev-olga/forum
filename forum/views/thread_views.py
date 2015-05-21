@@ -11,6 +11,7 @@ from forum.view_decorators.show_view import thread_login_required
 from forum import mixins
 from forum.view_decorators.show_view import admin_login_required
 
+
 class ThreadView(mixins.CategoriesContextMixin, generic.View):
 
     template_name = 'forum/thread/thread.html'
@@ -66,7 +67,7 @@ class CheckNewPostsView(generic.View):
         return JsonResponse({'new_posts': new_posts}, status=200)
 
 
-class UpdateThreadView(mixins.AjaxResponseMixin, mixins.ModalDialogMixin, generic.UpdateView):
+class ThreadUpdateView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, generic.UpdateView):
     template_name = 'forum/thread/thread_update.html'
     template_name_suffix = ""
     form_class = forms.ThreadUpdateForm
@@ -74,16 +75,25 @@ class UpdateThreadView(mixins.AjaxResponseMixin, mixins.ModalDialogMixin, generi
 
     @method_decorator(admin_login_required)
     def dispatch(self, *args, **kwargs):
-        return super(UpdateThreadView, self).dispatch(*args, **kwargs)
+        return super(ThreadUpdateView, self).dispatch(*args, **kwargs)
 
     def get_success_url(self):
-        return reverse('forum:subcategory', kwargs={'id': self.get_object().sub_category.id})
+        next_key = 'next'
+        if next_key in self.request.POST:
+            next = self.request.POST[next_key]
+        if not next:
+            next = reverse('forum:subcategory', kwargs={'id': self.get_object().sub_category.id})
+        return next
 
-    def form_valid(self, form):
-        return super(UpdateThreadView, self).form_valid(form)
+    def get_context_data(self, **kwargs):
+        context = super(ThreadUpdateView, self).get_context_data(**kwargs)
+        context['action'] = reverse('forum:thread_update', kwargs={'pk': self.get_object().id})
+        if 'HTTP_REFERER' in self.request.META:
+            context['next'] = self.request.META['HTTP_REFERER']
+        return context
 
 
-class DeleteThreadView(generic.DeleteView):
+class ThreadDeleteView(generic.DeleteView):
     model = models.Thread
 
     def get_success_url(self):

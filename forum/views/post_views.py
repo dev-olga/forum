@@ -8,7 +8,7 @@ from forum import mixins
 from forum.view_decorators.show_view import admin_login_required
 
 
-class UpdatePostView(mixins.AjaxResponseMixin, mixins.ModalDialogMixin, generic.UpdateView):
+class PostUpdateView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, generic.UpdateView):
     template_name = 'forum/thread/post_update.html'
     template_name_suffix = ""
     form_class = forms.PostUpdateForm
@@ -16,23 +16,27 @@ class UpdatePostView(mixins.AjaxResponseMixin, mixins.ModalDialogMixin, generic.
 
     @method_decorator(admin_login_required)
     def dispatch(self, *args, **kwargs):
-        return super(UpdatePostView, self).dispatch(*args, **kwargs)
+        return super(PostUpdateView, self).dispatch(*args, **kwargs)
 
     def get_success_url(self):
-        return reverse('forum:thread', kwargs={'id': self.get_object().thread.id})
+        next_key='next'
+        if next_key in self.request.POST:
+            next = self.request.POST[next_key]
+        if not next:
+            next = reverse('forum:thread', kwargs={'id': self.get_object().thread.id})
+        return next
 
     def form_valid(self, form):
-        return super(UpdatePostView, self).form_valid(form)
+        return super(PostUpdateView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
-
-        context = super(UpdatePostView, self).get_context_data(**kwargs)
-        context['action'] = reverse('forum:update_post', kwargs={'pk': self.get_object().id})
-
+        context = super(PostUpdateView, self).get_context_data(**kwargs)
+        context['action'] = reverse('forum:post_update', kwargs={'pk': self.get_object().id})
+        context['next'] = self.request.META['HTTP_REFERER']
         return context
 
 
-class DeletePostView(generic.DeleteView):
+class PostDeleteView(generic.DeleteView):
     model = models.Post
 
     def get_success_url(self):

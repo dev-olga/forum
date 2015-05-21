@@ -9,7 +9,14 @@ $(function() {
     $("[data-action='thread-update']").on('click', function(e){
         e.preventDefault();
         e.stopPropagation();
-        (new modalForm()).init(this, $("#thread-update--form-container"));
+        (new modalMultipartForm()).init(this, $("#thread-update-form-container"));
     });
+
+//    $("[data-action='thread-update']").on('click', function(e){
+//        e.preventDefault();
+//        e.stopPropagation();
+//        var container =$(this).closest(".thread-update-form-container");
+//        container.find(".content").load($(this).attr("href"), function(data){   container.show();     });
+//    });
 
 });

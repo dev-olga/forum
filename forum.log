@@ -8421,3 +8421,383 @@ Traceback (most recent call last):
   File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 76, in select_template
     raise TemplateDoesNotExist(', '.join(template_name_list))
 TemplateDoesNotExist: forum/post_confirm_delete.html
+[21/May/2015 12:42:21] ERROR [django.request:256] Internal Server Error: /forum/thread/6/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 15, in inner
+    return view(request, id, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 20, in dispatch
+    return super(ThreadView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 24, in get
+    id=id, form=None, user=request.user, reply_to=reply_to_id))
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 99, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 159, in render
+    return template.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 211, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 507, in render
+    six.reraise(*exc_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 493, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 579, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 496, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'thread_update' with arguments '('',)' and keyword arguments '{}' not found. 1 pattern(s) tried: [u'forum/thread/(?P<pk>\\d+)/edit$']
+[21/May/2015 14:45:10] ERROR [django.request:256] Internal Server Error: /forum/32/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 28, in inner
+    return view(request, id, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/sub_category_views.py", line 20, in dispatch
+    return super(SubCategoryView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/sub_category_views.py", line 23, in get
+    return render(request, self.template_name, self.get_context_data(id, None, request.user))
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 99, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 159, in render
+    return template.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 211, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 507, in render
+    six.reraise(*exc_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 493, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 579, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 496, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'delete_post' with arguments '('',)' and keyword arguments '{}' not found. 0 pattern(s) tried: []
+[21/May/2015 14:45:25] ERROR [django.request:256] Internal Server Error: /forum/32/
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 28, in inner
+    return view(request, id, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/sub_category_views.py", line 20, in dispatch
+    return super(SubCategoryView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/user/projects/django/github/forum/views/sub_category_views.py", line 23, in get
+    return render(request, self.template_name, self.get_context_data(id, None, request.user))
+  File "/usr/local/lib/python2.7/dist-packages/django/shortcuts.py", line 67, in render
+    template_name, context, request=request, using=using)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader.py", line 99, in render_to_string
+    return template.render(context, request)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 217, in render
+    nodelist.append(node.render(context))
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 159, in render
+    return template.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 211, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 329, in render
+    return nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 507, in render
+    six.reraise(*exc_info)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 493, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 579, in reverse
+    return force_text(iri_to_uri(resolver._reverse_with_prefix(view, prefix, *args, **kwargs)))
+  File "/usr/local/lib/python2.7/dist-packages/django/core/urlresolvers.py", line 496, in _reverse_with_prefix
+    (lookup_view_s, args, kwargs, len(patterns), patterns))
+NoReverseMatch: Reverse for 'thread_delete' with arguments '('',)' and keyword arguments '{}' not found. 1 pattern(s) tried: [u'forum/thread/(?P<pk>\\d+)/delete']
+[21/May/2015 14:56:04] ERROR [django.request:256] Internal Server Error: /forum/thread/6/edit
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 42, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 79, in dispatch
+    return super(ThreadUpdateView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 268, in get
+    return super(BaseUpdateView, self).get(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 206, in get
+    return self.render_to_response(self.get_context_data(form=form))
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 87, in get_context_data
+    context['next'] = self.request.META.HTTP_REFERER
+AttributeError: 'dict' object has no attribute 'HTTP_REFERER'
+[21/May/2015 14:56:24] ERROR [django.request:256] Internal Server Error: /forum/thread/6/edit
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 42, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 79, in dispatch
+    return super(ThreadUpdateView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 268, in get
+    return super(BaseUpdateView, self).get(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 206, in get
+    return self.render_to_response(self.get_context_data(form=form))
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 87, in get_context_data
+    context['next'] = self.request.META['HTTP_REFERER']
+AttributeError: 'dict' object has no attribute 'HTTP_REFERER'
+[21/May/2015 15:29:21] ERROR [django.request:256] Internal Server Error: /forum/thread/6/edit
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python2.7/dist-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 135, in render
+    return compiled_parent._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/defaulttags.py", line 155, in render
+    values = self.sequence.resolve(context, True)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 674, in resolve
+    new_obj = func(obj, *arg_vals)
+  File "/home/user/projects/django/github/forum/templatetags/forum_filters.py", line 7, in filter_by_permissions
+    return (c for c in categories if show_category(c, user))
+TypeError: 'NoneType' object is not iterable
+[21/May/2015 15:30:34] ERROR [django.request:256] Internal Server Error: /forum/thread/6/edit
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 42, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 78, in dispatch
+    return super(ThreadUpdateView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 268, in get
+    return super(BaseUpdateView, self).get(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 206, in get
+    return self.render_to_response(self.get_context_data(form=form))
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 91, in get_context_data
+    context['next'] = self.request.META['HTTP_REFERER']
+KeyError: 'HTTP_REFERER'
+[21/May/2015 15:31:00] ERROR [django.request:256] Internal Server Error: /forum/thread/6/edit
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 42, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 78, in dispatch
+    return super(ThreadUpdateView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 268, in get
+    return super(BaseUpdateView, self).get(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/edit.py", line 206, in get
+    return self.render_to_response(self.get_context_data(form=form))
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 91, in get_context_data
+    if self.request.META['HTTP_REFERER']:
+KeyError: 'HTTP_REFERER'
