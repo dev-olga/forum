@@ -8801,3 +8801,49 @@ Traceback (most recent call last):
   File "/home/user/projects/django/github/forum/views/thread_views.py", line 91, in get_context_data
     if self.request.META['HTTP_REFERER']:
 KeyError: 'HTTP_REFERER'
+[25/May/2015 13:58:31] ERROR [django.request:256] Internal Server Error: /forum/posts/17/delete
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 132, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 71, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 34, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/user/projects/django/github/forum/view_decorators/show_view.py", line 42, in inner
+    return view(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/decorators.py", line 30, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 139, in dispatch
+    return super(PostDeleteView, self).dispatch(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/base.py", line 89, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/django/views/generic/detail.py", line 116, in get
+    context = self.get_context_data(object=self.object)
+  File "/home/user/projects/django/github/forum/views/thread_views.py", line 145, in get_context_data
+    context = super(PostUpdateView, self).get_context_data(**kwargs)
+TypeError: super(type, obj): obj must be an instance or subtype of type
+[25/May/2015 14:40:07] ERROR [django.request:256] Internal Server Error: /forum/post/22/delete
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/django/core/handlers/base.py", line 164, in get_response
+    response = response.render()
+  File "/usr/local/lib/python2.7/dist-packages/django/template/response.py", line 158, in render
+    self.content = self.rendered_content
+  File "/usr/local/lib/python2.7/dist-packages/django/template/response.py", line 135, in rendered_content
+    content = template.render(context, self._request)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/backends/django.py", line 74, in render
+    return self.template.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 209, in render
+    return self._render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 201, in _render
+    return self.nodelist.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/base.py", line 903, in render
+    bit = self.render_node(node, context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 79, in render_node
+    return node.render(context)
+  File "/usr/local/lib/python2.7/dist-packages/django/template/debug.py", line 92, in render
+    output = force_text(output)
+  File "/usr/local/lib/python2.7/dist-packages/django/utils/encoding.py", line 94, in force_text
+    s = six.text_type(bytes(s), encoding, errors)
+  File "/home/user/projects/django/github/forum/models.py", line 48, in __str__
+    return format('%s: %s', self.id, self.message)
+TypeError: format() takes at most 2 arguments (3 given)

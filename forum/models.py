@@ -25,24 +25,24 @@ class Thread(models.Model):
     sub_category = models.ForeignKey(SubCategory)
     subject = models.CharField(max_length=100)
     message = models.CharField(max_length=1024)
-    date = models.DateTimeField(default=datetime.now)
+    date = models.DateTimeField(default=datetime.utcnow)
     user = models.ForeignKey('auth.User', default=None, null=True)
     user_name = models.CharField(max_length=100, default=None, null=True, blank=True)
     user_email = models.EmailField(max_length=100, default=None, null=True, blank=True)
     image = models.ImageField(storage=fs, upload_to='threads/', default=None, null=True, max_length=1024, blank=True)
 
     def __str__(self):
-        return self.subject
+        return '{0}: {1}'.format(self.id, self.subject)
 
 
 class Post(models.Model):
     thread = models.ForeignKey(Thread)
     message = models.CharField(max_length=1024)
-    date = models.DateTimeField(default=datetime.now)
+    date = models.DateTimeField(default=datetime.utcnow)
     user = models.ForeignKey('auth.User', default=None, null=True)
     user_name = models.CharField(max_length=100, default=None, null=True, blank=True)
     user_email = models.EmailField(max_length=100, default=None, null=True, blank=True)
     parent_post = models.ForeignKey('self', default=None, null=True, blank=True)
 
     def __str__(self):
-        return self.message
+        return '{0}: {1}'.format(self.id, self.message)

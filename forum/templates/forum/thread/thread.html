@@ -47,8 +47,7 @@
                                  <a href="{% url 'forum:post_update' post.id %}"
                                    class="btn btn-primary" data-action='post-update'>Update</a>
                                  <a href="{% url 'forum:post_delete' post.id %}"
-                                   class="btn btn-primary" >Delete</a>
-                                {% include "forum/partial/modal.html" with id='post-update-form-container' title='Update' %}
+                                   class="btn btn-primary" data-action='delete'>Delete</a>
                             {% endif %}
                         </div>
                         {% include "forum/partial/post_body.html" with post=post%}
@@ -65,6 +64,7 @@
         <br>
         <a href="{% url 'forum:thread' thread.id %}"  class="alert-link">Reload page</a>
     </div>
+
 {% endblock %}
 
 {% block scripts %}

@@ -28,6 +28,16 @@ class AjaxFormMixin(generic.FormView):
             return response
 
 
+class AjaxDeleteMixin(generic.FormView):
+    def delete(self, request, *args, **kwargs):
+        url = self.get_success_url()
+        response = super(AjaxDeleteMixin, self).delete(request, args, kwargs)
+        if self.request.is_ajax():
+            return JsonResponse({'response': '', 'is_valid': True, 'success_url': url}, status=200)
+        else:
+            return response
+
+
 class ModalDialogMixin(base.ContextMixin):
 
     def get_context_data(self, **kwargs):

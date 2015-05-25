@@ -25,8 +25,11 @@ modalForm = function(){
                 if(!data.is_valid){
                     self.replaceWith(data.response);
                 }
+                else if (data.success_url){
+                    window.location.replace(data.success_url);
+                }
                 else{
-                    window.location.replace(window.location.href);
+                    window.location.reload();
                 }
             }
         });
@@ -64,8 +67,11 @@ modalMultipartForm = function(){
                 if(!data.is_valid){
                     self.replaceWith(data.response);
                 }
+                else if (data.success_url){
+                    window.location.replace(data.success_url);
+                }
                 else{
-                    window.location.replace(window.location.href);
+                    window.location.reload();
                 }
             }
         });

@@ -55,7 +55,7 @@ class ThreadView(mixins.CategoriesContextMixin, generic.View):
         context['thread'] = thread
         context['form'] = form
         context['reply_to'] = reply_to
-        context['thread_loading_date'] = int(datetime.datetime.now().strftime("%s"))
+        context['thread_loading_date'] = int(datetime.datetime.utcnow().strftime("%s"))
         return context
 
 
@@ -89,11 +89,22 @@ class ThreadUpdateView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, generic.Up
         return context
 
 
-class ThreadDeleteView(generic.DeleteView):
+class ThreadDeleteView(mixins.AjaxDeleteMixin, mixins.ModalDialogMixin, generic.DeleteView):
+    template_name = 'forum/thread/delete.html'
+    template_name_suffix = ""
     model = models.Thread
 
+    @method_decorator(admin_login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ThreadDeleteView, self).dispatch(*args, **kwargs)
+
     def get_success_url(self):
-        return reverse('forum:thread', kwargs={'id': self.get_object().sub_category.id})
+        return reverse('forum:subcategory', kwargs={'id': self.get_object().sub_category.id})
+
+    def get_context_data(self, **kwargs):
+        context = super(ThreadDeleteView, self).get_context_data(**kwargs)
+        context['action'] = reverse('forum:thread_delete', kwargs={'pk': self.get_object().id})
+        return context
 
 
 class PostUpdateView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, generic.UpdateView):
@@ -118,8 +129,19 @@ class PostUpdateView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, generic.Upda
         return context
 
 
-class PostDeleteView(generic.DeleteView):
+class PostDeleteView(mixins.AjaxDeleteMixin, generic.DeleteView):
+    template_name = 'forum/thread/delete.html'
+    template_name_suffix = ""
     model = models.Post
+
+    @method_decorator(admin_login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(PostDeleteView, self).dispatch(*args, **kwargs)
 
     def get_success_url(self):
         return reverse('forum:thread', kwargs={'id': self.get_object().thread.id})
+
+    def get_context_data(self, **kwargs):
+        context = super(PostDeleteView, self).get_context_data(**kwargs)
+        context['action'] = reverse('forum:post_delete', kwargs={'pk': self.get_object().id})
+        return context
