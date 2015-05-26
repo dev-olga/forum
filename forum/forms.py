@@ -5,10 +5,6 @@ from django.contrib.auth.models import User
 
 
 class BaseForumForm(forms.ModelForm):
-    class Meta:
-        widgets = {
-            'message': forms.Textarea(attrs={'cols': 40, 'rows': 5})
-        }
 
     def __init__(self, user, *args, **kwargs):
         super(BaseForumForm, self).__init__(*args, **kwargs)
@@ -22,6 +18,11 @@ class BaseForumForm(forms.ModelForm):
 
         self.fields['user_email'].initial = user.email
         self.fields['user_email'].widget.attrs['readonly'] = True
+
+    class Meta:
+        widgets = {
+            'message': forms.Textarea(attrs={'cols': 40, 'rows': 5})
+        }
 
 
 class ThreadForm(BaseForumForm):
@@ -39,7 +40,6 @@ class PostForm(BaseForumForm):
         fields = ['user_name', 'user_email', 'message']
 
 
-
 class AuthenticationForm(auth_forms.AuthenticationForm):
     """
     Form for authorization by username and email
@@ -53,13 +53,9 @@ class AuthenticationForm(auth_forms.AuthenticationForm):
 
 class UserCreationForm(auth_forms.UserCreationForm):
     """
-    A form that creates a user, with no privileges, from the given username and
+    Form that creates a user by username or email and
     password.
     """
-
-    class Meta(auth_forms.UserCreationForm.Meta):
-        fields = ["username", "email"]
-
     email = forms.EmailField(required=True)
 
     def clean_email(self):
@@ -71,8 +67,15 @@ class UserCreationForm(auth_forms.UserCreationForm):
             raise forms.ValidationError("A user with that email already exists.")
         return self.cleaned_data['email']
 
+    class Meta(auth_forms.UserCreationForm.Meta):
+        fields = ["username", "email"]
+
 
 class PostUpdateForm(forms.ModelForm):
+    def __init__(self, *args,**kwargs):
+        super(PostUpdateForm, self).__init__(*args, **kwargs)
+        self.fields['parent_post'].queryset = models.Post.objects.filter(thread=self.instance.thread)
+
     class Meta(BaseForumForm.Meta):
         model = models.Post
         fields = ['thread', 'message', 'parent_post']
