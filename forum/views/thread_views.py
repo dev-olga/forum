@@ -55,7 +55,7 @@ class ThreadView(mixins.CategoriesContextMixin, generic.View):
         context['thread'] = thread
         context['form'] = form
         context['reply_to'] = reply_to
-        context['thread_loading_date'] = int(datetime.datetime.utcnow().strftime("%s"))
+        context['thread_loading_date'] = datetime.datetime.utcnow().strftime("%s.%f")
         return context
 
 
@@ -68,7 +68,6 @@ class CheckNewPostsView(generic.View):
 
 
 # Admin part
-
 
 class ThreadUpdateView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, generic.UpdateView):
     template_name = 'forum/thread/thread_update.html'

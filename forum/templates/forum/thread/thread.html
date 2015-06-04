@@ -72,6 +72,7 @@
     <script src="{% static 'forum/scripts/thread.js' %}"></script>
     <script type="text/javascript">
         $(function() {
+{#            newPostsListener.start("{% url 'forum:check_new_posts' id=thread.id last_loaded=thread_loading_date%}")#}
             newPostsListener.start("{% url 'forum:check_new_posts' thread.id thread_loading_date%}")
         });
     </script>
