@@ -1,4 +1,4 @@
 .idea
-.forum/static/media/
+forum/static/media/
 forum.log
 db.sqlite3
