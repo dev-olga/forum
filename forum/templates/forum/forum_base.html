@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-md-9">
             {% load forum_filters %}
-            {% for category in categories|filter_by_permissions:user %}
+            {% for category in categories|filter_by_permissions:user|dictsort:'auth_only' %}
                 <p>
                     <strong class="{% if category.auth_only %}text-warning{% endif %}">{{ category.name }}:</strong>
                         {% for subcategory in category.subcategory_set.all %}

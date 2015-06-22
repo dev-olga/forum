@@ -1,3 +1,6 @@
+body{
+    word-wrap: break-word;
+}
 ul{
     margin: 0;
     padding: 0;

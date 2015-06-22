@@ -4,16 +4,8 @@
 
 {% block header %}
     <!-- HEADER -->
-    <div class="row">
-        <div class="col-md-2">
-            {% load staticfiles %}
-            <img class="img-responsive index logo" alt="Logo" src="{% static 'forum/images/logo.png' %}" />
-        </div>
-        <div class="col-md-7">
-            <h1>Forum board</h1>
-            {% lorem 1 p %}
-        </div>
-        <div class="col-md-3">
+    <div class=row>
+        <div class="col-md-12" style="padding-right:0">
             <div class="pull-right">
                 {% if user.is_authenticated %}
                     <a href="{% url 'forum:logout' %}">Log out</a>
@@ -27,51 +19,64 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-2">
+            {% load staticfiles %}
+            <img class="img-responsive index logo" alt="Logo" src="{% static 'forum/images/logo.png' %}" />
+        </div>
+        <div class="col-md-10">
+            <h1>Forum board</h1>
+            {% lorem 1 p %}
+        </div>
+
+    </div>
 {% endblock %}
     <!-- Content -->
 {% block content %}
     <div class="row">
-     <div class="col-md-4">
-        <div class="bs-component">
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Updates</h3>
+         <div class="col-md-3">
+            <div class="bs-component">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Updates</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            {% for thread in latest_threads %}
+                                <li>
+                                    <a href="{% url "forum:subcategory" thread.sub_category.id %}">
+                                        [{{ thread.sub_category.name }}]
+                                    </a>
+                                    <a href="{% url "forum:thread" thread.id %}"> {{ thread.subject }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
-                <div class="panel-body">
-                    <ul>
-                        {% for thread in latest_threads %}
-                            <li>
-                                <a href="{% url "forum:subcategory" thread.sub_category.id %}">
-                                    [{{ thread.sub_category.name }}]
-                                </a>
-                                <a href="{% url "forum:thread" thread.id %}"> {{ thread.subject }}</a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-         </div>
-    </div>
-        {% load forum_filters %}
-        {% for category in categories|filter_by_permissions:user %}
-            <div class="col-md-2">
-                <div class="bs-component">
-                    <div class="panel {% if category.auth_only %}panel-warning{% else %}panel-primary{% endif %}">
-                        <div class="panel-heading">
-                          <h3 class="panel-title">{{ category.name }}</h3>
-                        </div>
-                        <div class="panel-body">
-                            <ul>
-                                {% for subcategory in category.subcategory_set.all %}
-                                    <li>
-                                        <a href="{% url "forum:subcategory" subcategory.id %}">{{ subcategory.name }}</a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
+             </div>
+        </div>
+        <div class="col-md-9">
+            {% load forum_filters %}
+            {% for category in categories|filter_by_permissions:user|dictsort:'auth_only' %}
+                <div class="col-md-3">
+                    <div class="bs-component">
+                        <div class="panel {% if category.auth_only %}panel-warning{% else %}panel-primary{% endif %}">
+                            <div class="panel-heading">
+                              <h3 class="panel-title">{{ category.name }}</h3>
+                            </div>
+                            <div class="panel-body">
+                                <ul>
+                                    {% for subcategory in category.subcategory_set.all %}
+                                        <li>
+                                            <a href="{% url "forum:subcategory" subcategory.id %}">{{ subcategory.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

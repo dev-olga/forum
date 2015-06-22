@@ -24,7 +24,7 @@ class SubCategory(models.Model):
 class Thread(models.Model):
     sub_category = models.ForeignKey(SubCategory)
     subject = models.CharField(max_length=100)
-    message = models.CharField(max_length=1024)
+    message = models.CharField(max_length=2048)
     date = models.DateTimeField(default=datetime.utcnow)
     user = models.ForeignKey('auth.User', default=None, null=True)
     user_name = models.CharField(max_length=100, default=None, null=True, blank=True)
@@ -37,7 +37,7 @@ class Thread(models.Model):
 
 class Post(models.Model):
     thread = models.ForeignKey(Thread)
-    message = models.CharField(max_length=1024)
+    message = models.CharField(max_length=2048)
     date = models.DateTimeField(default=datetime.utcnow)
     user = models.ForeignKey('auth.User', default=None, null=True)
     user_name = models.CharField(max_length=100, default=None, null=True, blank=True)
