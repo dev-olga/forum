@@ -37,7 +37,8 @@
     </div>
 
     {% if user.is_superuser %}
-        {% include "forum/partial/modal.html" with id='update-form-container' title='Update' %}
+        {% include "forum/partial/modal.html" with id='update-thread-form-container' title='Thread update' %}
+        {% include "forum/partial/modal.html" with id='update-post-form-container' title='Post update' %}
         {% include "forum/partial/modal.html" with id='delete-form-container' title='Delete' %}
     {% endif %}
 {% endblock %}

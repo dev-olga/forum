@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row thread-header">
     {% if  thread.image %}
         <div class=col-md-2>
             <img class="img-responsive"
@@ -9,20 +9,22 @@
         <div class=col-md-12>
     {% endif %}
             <h4>
+                <div class=pull-right>
+                    <a href="{% url 'forum:thread' thread.id %}"  class="btn btn-default" >Reply</a>
+
+                        {% if user.is_superuser %}
+                             <a href="{% url 'forum:thread_update' thread.id %}"
+                               class="btn btn-primary" data-action='thread-update'><i class="fa fa-pencil"></i></a>
+                             <a href="{% url 'forum:thread_delete' thread.id %}"
+                                class="btn btn-primary" data-action='delete'><i class="fa fa-trash"></i></a>
+                        {% endif %}
+                </div>
                 <strong>#{{ thread.id }} | {{ thread.subject }}</strong>
                 <span>
                     Created: {{ thread.date|date:"d.m.Y" }}
                     by {{ thread.user_name|default:"Guest" }}
                 </span>
-                <a href="{% url 'forum:thread' thread.id %}"
-                       class="btn btn-default" >Reply</a>
 
-                {% if user.is_superuser %}
-                     <a href="{% url 'forum:thread_update' thread.id %}"
-                       class="btn btn-primary" data-action='thread-update'>Update</a>
-                     <a href="{% url 'forum:thread_delete' thread.id %}"
-                        class="btn btn-primary" data-action='delete'>Delete</a>
-                {% endif %}
             </h4>
             <p>
                 {{ thread.message }}

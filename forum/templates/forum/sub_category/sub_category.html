@@ -28,14 +28,6 @@
                 {% for post in thread.post_set.all|dictsortreversed:'date'|slice:":2" %}
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div class=pull-right>
-{#                            {% if user.is_superuser %}#}
-{#                                 <a href="{% url 'forum:post_update' post.id %}"#}
-{#                                   class="btn btn-primary" data-action='post-update'>Update</a>#}
-{#                                 <a href="{% url 'forum:post_delete' post.id %}"#}
-{#                                   class="btn btn-primary" data-action='delete'>Delete</a>#}
-{#                            {% endif %}#}
-                            </div>
                             {% include "forum/partial/post_body.html" with post=post%}
                         </div>
                     </div>

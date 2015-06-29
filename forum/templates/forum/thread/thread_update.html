@@ -1,13 +1,11 @@
 <form enctype="multipart/form-data" action="{{ action }}" method="post">
     <fieldset>
-        <legend>Update thread</legend>
-            {% include "forum/partial/form.html" with form=form %}
+        {% include "forum/partial/form.html" with form=form %}
         {% if show_buttons %}
             <div class="btn-group">
             <input type="submit" value="Submit" class="btn btn-primary"/>
             <a href="{{ next }}" class="btn btn-default">Cancel</a>
         </div>
         {% endif %}
-        <input type="hidden" value="{{ next }}" name="next">
     </fieldset>
 </form>

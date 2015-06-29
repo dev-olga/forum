@@ -45,9 +45,9 @@
                                    class="btn btn-default" >Reply</a>
                             {% if user.is_superuser %}
                                  <a href="{% url 'forum:post_update' post.id %}"
-                                   class="btn btn-primary" data-action='post-update'>Update</a>
+                                   class="btn btn-primary" data-action='post-update'><i class="fa fa-pencil"></i></a>
                                  <a href="{% url 'forum:post_delete' post.id %}"
-                                   class="btn btn-primary" data-action='delete'>Delete</a>
+                                   class="btn btn-primary" data-action='delete'><i class="fa fa-trash"></i></a>
                             {% endif %}
                         </div>
                         {% include "forum/partial/post_body.html" with post=post%}

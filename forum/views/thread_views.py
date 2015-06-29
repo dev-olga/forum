@@ -89,7 +89,7 @@ class ThreadUpdateView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, generic.Up
 
 
 class ThreadDeleteView(mixins.AjaxDeleteMixin, mixins.ModalDialogMixin, generic.DeleteView):
-    template_name = 'forum/thread/delete.html'
+    template_name = 'forum/thread/thread_delete.html'
     template_name_suffix = ""
     model = models.Thread
 
@@ -129,7 +129,7 @@ class PostUpdateView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, generic.Upda
 
 
 class PostDeleteView(mixins.AjaxDeleteMixin, generic.DeleteView):
-    template_name = 'forum/thread/delete.html'
+    template_name = 'forum/thread/post_delete.html'
     template_name_suffix = ""
     model = models.Post
 
