@@ -14,7 +14,6 @@ class SubCategoryView(mixins.CategoriesContextMixin, View):
 
     template_name = 'forum/sub_category/sub_category.html'
 
-
     @method_decorator(sub_category_login_required)
     def dispatch(self, *args, **kwargs):
         return super(SubCategoryView, self).dispatch(*args, **kwargs)

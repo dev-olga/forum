@@ -7,32 +7,9 @@ from django.shortcuts import redirect
 from django.views.generic import FormView
 
 from forum import forms, mixins
-# from forum.views.base_views import BaseAjaxFormView
 
-
-# class LoginView(BaseAjaxFormView):
-#     """
-#     Login view
-#     """
-#
-#     template_name = 'forum/account/login.html'
-#     success_url = lazy(reverse, str)('forum:index')
-#     form_class = forms.AuthenticationForm
-#
-#     def form_valid(self, form, **kwargs):
-#         if form.is_valid():
-#             # Ensure the user-originating redirection url is safe.
-#             if not is_safe_url(url=self.success_url, host=self.request.get_host()):
-#                 return HttpResponseRedirect(self.request.path)
-#
-#             login(self.request, form.get_user())
-#
-#             return super(LoginView, self).form_valid(form)
 
 class LoginView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, FormView):
-    """
-    Login view
-    """
 
     template_name = 'forum/account/login.html'
     success_url = lazy(reverse, str)('forum:index')
@@ -56,9 +33,6 @@ def logout_view(request, redirect_to=''):
 
 
 class RegistrationView(mixins.AjaxFormMixin, mixins.ModalDialogMixin, FormView):
-    """
-    New user registration view
-    """
 
     template_name = 'forum/account/registration.html'
     success_url = lazy(reverse, str)('forum:index')

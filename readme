@@ -1,0 +1,9 @@
+start_script.sh
+	1. Init database
+	2. Create forum administrator: login: admin, password: admin
+	3. Run site on the url 127.0.0.1:8001 
+	
+libs:
+	Pillow:
+		sudo apt-get install gcc python-dev
+		$ pip install Pillow

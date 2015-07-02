@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import View
-from forum import models
 from django.db.models import Max
+
+from forum import models
 
 
 class IndexView(View):
